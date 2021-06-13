@@ -244,16 +244,16 @@
 
           
           
-          
-          
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
           </li>
+          
+          
           
           
           
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -516,14 +516,14 @@ aliyun-oss
 1、创建Bucket
 命名：srb-file
 读写权限：公共读
-###2、上传默认头像
+2、上传默认头像
 创建文件夹avatar，上传默认的用户头像
 
 三、使用RAM子用户
 1、进入子用户管理页面
 
 
-2、添......
+2、添加用户......
     </div>
   </a>
   
@@ -1221,5 +1221,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
