@@ -74,21 +74,14 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/Api%EF%BC%8COSS/</loc>
+    <loc>http://yoursite-url/tags/OSS/</loc>
     <lastmod>2021-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Api-OSS/</loc>
-    <lastmod>2021-06-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/Api-%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>http://yoursite-url/tags/%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2021-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
