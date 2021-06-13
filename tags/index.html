@@ -258,17 +258,6 @@
           
           
           <li>
-            <a href="/categories/">
-              
-              分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               归档
@@ -283,6 +272,17 @@
             <a href="/tags/">
               
               标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
               
               
             </a>
@@ -435,15 +435,58 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
+        <a href="#OSS" title="OSS" rel="2">OSS</a>
+        
         <a href="#短信服务" title="短信服务" rel="1">短信服务</a>
         
-        <a href="#OSS" title="OSS" rel="3">OSS</a>
+        <a href="#EasyExcel" title="EasyExcel" rel="1">EasyExcel</a>
         
         <a href="#SpringSecurity" title="SpringSecurity" rel="1">SpringSecurity</a>
         
       </div>
 
       <!-- 标签列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="OSS">
+          <span class="tag-text">OSS</span>
+        </span>
+        
+        <div class="post-preview">
+          <a href="/cn/使用SDK访问OSS/">
+            <h2 class="post-title">
+              使用SDK访问OSS
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              阿里云OSS的工具使用
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
+          <a href="/cn/阿里云存储OSS/">
+            <h2 class="post-title">
+              阿里云OSS存储
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              阿里云OSS存储介绍
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+      </div>
       
       <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="短信服务">
@@ -470,26 +513,9 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="OSS">
-          <span class="tag-text">OSS</span>
+        <span class="fa fa-tag listing-seperator" id="EasyExcel">
+          <span class="tag-text">EasyExcel</span>
         </span>
-        
-        <div class="post-preview">
-          <a href="/cn/使用SDK访问OSS/">
-            <h2 class="post-title">
-              使用SDK访问OSS
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              阿里云OSS的工具使用
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
         
         <div class="post-preview">
           <a href="/cn/阿里巴巴EasyExcel使用/">
@@ -502,23 +528,6 @@
             
             <h3 class="post-subtitle">
               阿里巴巴EasyExcel介绍和小demo的操作
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
-        
-        <div class="post-preview">
-          <a href="/cn/阿里云存储OSS/">
-            <h2 class="post-title">
-              阿里云OSS存储
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              阿里云OSS存储介绍
             </h3>
             
           </a>
@@ -1028,20 +1037,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
