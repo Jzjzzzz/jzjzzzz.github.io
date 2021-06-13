@@ -9,6 +9,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/cn/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4EasyExcel%E4%BD%BF%E7%94%A8/</loc>
+    
+    <lastmod>2021-06-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/tags/index.html</loc>
     
     <lastmod>2021-06-13</lastmod>
@@ -74,14 +81,14 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/OSS/</loc>
+    <loc>http://yoursite-url/tags/%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2021-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
+    <loc>http://yoursite-url/tags/OSS/</loc>
     <lastmod>2021-06-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
