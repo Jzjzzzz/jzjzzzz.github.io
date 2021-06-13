@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -472,14 +472,14 @@
 <img src="image.png" alt="Alt text"><br>
 点击“Java SDK”进入SDK开发文档<br>
 <img src="image1.png" alt="Alt text"></p>
-<p>##二、创建测试项目</p>
+<h2 id="二、创建测试项目">二、创建测试项目</h2>
 <h3 id="1、创建Maven项目">1、创建Maven项目</h3>
 <p>com.jzj<br>
 aliyun-oss</p>
 <h3 id="2、配置pom">2、配置pom</h3>
 <p><img src="image2.png" alt="Alt text"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--aliyunOSS--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-sdk-oss<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>##三、测试用例</p>
+<h2 id="三、测试用例">三、测试用例</h2>
 <h3 id="1、创建Bucket">1、创建Bucket</h3>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.aliyunoss;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OSSTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Endpoint以杭州为例，其它Region请按实际情况填写。</span></span><br><span class="line">    <span class="built_in">String</span> endpoint = <span class="string">&quot;your endpoint&quot;</span>;</span><br><span class="line">    <span class="comment">// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。</span></span><br><span class="line">    <span class="built_in">String</span> accessKeyId = <span class="string">&quot;your accessKeyId&quot;</span>;</span><br><span class="line">    <span class="built_in">String</span> accessKeySecret = <span class="string">&quot;your accessKeySecret&quot;</span>;</span><br><span class="line">    <span class="built_in">String</span> bucketName = <span class="string">&quot;srb-file&quot;</span>;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">testCreateBucket</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 创建OSSClient实例。</span></span><br><span class="line">        OSS ossClient = <span class="keyword">new</span> OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line">        <span class="comment">// 创建存储空间。</span></span><br><span class="line">        ossClient.createBucket(bucketName);</span><br><span class="line">        <span class="comment">// 关闭OSSClient。</span></span><br><span class="line">        ossClient.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="2、判断bucket是否存在">2、判断bucket是否存在</h3>
@@ -630,7 +630,7 @@ aliyun-oss</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">使用SDK访问OSS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8SDK"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一、使用SDK</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BAMaven%E9%A1%B9%E7%9B%AE"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1、创建Maven项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AEpom"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">2、配置pom</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BABucket"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">1、创建Bucket</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E5%88%A4%E6%96%ADbucket%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.1.4.</span> <span class="toc-nav-text">2、判断bucket是否存在</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3%E3%80%81%E8%AE%BE%E7%BD%AEbucket%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-nav-number">1.1.5.</span> <span class="toc-nav-text">3、设置bucket访问权限</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">使用SDK访问OSS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8SDK"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一、使用SDK</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二、创建测试项目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BAMaven%E9%A1%B9%E7%9B%AE"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1、创建Maven项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AEpom"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2、配置pom</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%89%E3%80%81%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三、测试用例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BABucket"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1、创建Bucket</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E5%88%A4%E6%96%ADbucket%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2、判断bucket是否存在</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3%E3%80%81%E8%AE%BE%E7%BD%AEbucket%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3、设置bucket访问权限</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1193,20 +1193,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
