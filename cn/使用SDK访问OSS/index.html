@@ -139,10 +139,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/archives/">
+  <link rel="canonical" href="http://yoursite-url/cn/使用SDK访问OSS/">
   <title>
     
-      Learn to Cherish
+      使用SDK访问OSS - Learn to Cherish
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -348,19 +348,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -382,10 +382,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>漫漫前路</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">长路漫漫吾将上下而求索</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#OSS" title="OSS">OSS</a>
+              
+            </div>
+            <h1>使用SDK访问OSS</h1>
+            <h2 class="subheading">A succinct hexo theme...</h2>
+            <span class="meta">
+              Posted by Jzj on
+              2021-06-13
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">1</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">366</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -426,274 +458,254 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+        <h1 id="使用SDK访问OSS"><a href="#使用SDK访问OSS" class="headerlink" title="使用SDK访问OSS"></a>使用SDK访问OSS</h1><h2 id="一、使用SDK"><a href="#一、使用SDK" class="headerlink" title="一、使用SDK"></a>一、使用SDK</h2><p>在OSS的概览页右下角找到“Bucket管理”，点击“OSS学习路径”<br><img src="image.png" alt="Alt text"><br>点击“Java SDK”进入SDK开发文档<br><img src="image1.png" alt="Alt text"></p>
+<h2 id="二、创建测试项目"><a href="#二、创建测试项目" class="headerlink" title="二、创建测试项目"></a>二、创建测试项目</h2><h3 id="1、创建Maven项目"><a href="#1、创建Maven项目" class="headerlink" title="1、创建Maven项目"></a>1、创建Maven项目</h3><p>com.jzj<br>aliyun-oss</p>
+<h3 id="2、配置pom"><a href="#2、配置pom" class="headerlink" title="2、配置pom"></a>2、配置pom</h3><p><img src="image2.png" alt="Alt text"><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--aliyunOSS--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-sdk-oss<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.10.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="三、测试用例"><a href="#三、测试用例" class="headerlink" title="三、测试用例"></a>三、测试用例</h2><h3 id="1、创建Bucket"><a href="#1、创建Bucket" class="headerlink" title="1、创建Bucket"></a>1、创建Bucket</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.atguigu.aliyunoss;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OSSTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Endpoint以杭州为例，其它Region请按实际情况填写。</span></span><br><span class="line">    <span class="built_in">String</span> endpoint = <span class="string">&quot;your endpoint&quot;</span>;</span><br><span class="line">    <span class="comment">// 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建RAM账号。</span></span><br><span class="line">    <span class="built_in">String</span> accessKeyId = <span class="string">&quot;your accessKeyId&quot;</span>;</span><br><span class="line">    <span class="built_in">String</span> accessKeySecret = <span class="string">&quot;your accessKeySecret&quot;</span>;</span><br><span class="line">    <span class="built_in">String</span> bucketName = <span class="string">&quot;srb-file&quot;</span>;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">testCreateBucket</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 创建OSSClient实例。</span></span><br><span class="line">        OSS ossClient = <span class="keyword">new</span> OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line">        <span class="comment">// 创建存储空间。</span></span><br><span class="line">        ossClient.createBucket(bucketName);</span><br><span class="line">        <span class="comment">// 关闭OSSClient。</span></span><br><span class="line">        ossClient.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、判断bucket是否存在"><a href="#2、判断bucket是否存在" class="headerlink" title="2、判断bucket是否存在"></a>2、判断bucket是否存在</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testExist</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建OSSClient实例。</span></span><br><span class="line">    OSS ossClient = <span class="keyword">new</span> <span class="built_in">OSSClientBuilder</span>().<span class="built_in">build</span>(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line">    <span class="keyword">boolean</span> exists = ossClient.<span class="built_in">doesBucketExist</span>(bucketName);</span><br><span class="line">    System.out.<span class="built_in">println</span>(exists);</span><br><span class="line">    <span class="comment">// 关闭OSSClient。</span></span><br><span class="line">    ossClient.<span class="built_in">shutdown</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、设置bucket访问权限"><a href="#3、设置bucket访问权限" class="headerlink" title="3、设置bucket访问权限"></a>3、设置bucket访问权限</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">testAccessControl</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 创建OSSClient实例。</span></span><br><span class="line">    OSS ossClient = <span class="keyword">new</span> OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line">    <span class="comment">// 设置存储空间的访问权限为：公共读。</span></span><br><span class="line">    ossClient.setBucketAcl(bucketName, CannedAccessControlList.PublicRead);</span><br><span class="line">    <span class="comment">// 关闭OSSClient。</span></span><br><span class="line">    ossClient.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            06-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/阿里云存储OSS/" style="color: #0085a1">
-              <span>
-                阿里云OSS存储
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
           
-          <li>
-            06-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/使用SDK访问OSS/" style="color: #0085a1">
-              <span>
-                使用SDK访问OSS
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/SpringSecurity权限控制/" style="color: #0085a1">
-              <span>
-                SpringSecurity权限控制
-                
-                -- cn
-                
-              </span>
-            </a>
+          <li class="next">
+            <a href="/cn/阿里云存储OSS/" data-toggle="tooltip" data-placement="top" title="阿里云OSS存储">Next Post &rarr;</a>
           </li>
           
         </ul>
-      </div>
-      
-    </div>
-  </div>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      如果您喜欢此博客或发现它对您有用，则欢迎对此发表评论。 也欢迎您共享此博客，以便更多人可以参与。 如果博客中使用的图像侵犯了您的版权，请与作者联系以将其删除。 谢谢 ！
+    
+  </p>
 </div>
+<!-- tip end -->
 
+        <!-- tip end -->
+        
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
 
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#OSS" title="OSS" rel="2">OSS</a>
-    
-    
-    
-    <a href="/tags/#SpringSecurity" title="SpringSecurity" rel="1">SpringSecurity</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/tx.jpeg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>不要在该奋斗的年纪选择安逸</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/V-Vincen">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-      <li>
-        <a target="_blank" href="https://twitter.com/V_Vincen_">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.instagram.com/v_vincen_">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="http://weibo.com/WVincen">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../cn/%E4%BD%BF%E7%94%A8SDK%E8%AE%BF%E9%97%AEOSS/">
-      <li>使用SDK访问OSS</li>
-    </a>
-    
-    <a href="../cn/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AD%98%E5%82%A8OSS/">
-      <li>阿里云OSS存储</li>
-    </a>
-    
-    <a href="../cn/SpringSecurity%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">
-      <li>SpringSecurity权限控制</li>
-    </a>
-    
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=使用SDK访问OSS&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/使用SDK访问OSS/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
   </ul>
 </div>
 
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
+        <!-- Sharing End -->
+        
         <hr>
-    
-        <!-- Friends Blog -->
 
-<h5><a href="/">链友</a></h5>
-<ul class="list-inline">
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
   
-</ul>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: '',
+      id: 'Sun Jun 13 2021 18:40:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      language: 'en',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
 
 
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
         <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
     
-        <!-- Archives -->
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8SDK%E8%AE%BF%E9%97%AEOSS"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">使用SDK访问OSS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8SDK"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">一、使用SDK</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">二、创建测试项目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BAMaven%E9%A1%B9%E7%9B%AE"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1、创建Maven项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E9%85%8D%E7%BD%AEpom"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2、配置pom</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%89%E3%80%81%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">三、测试用例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%88%9B%E5%BB%BABucket"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">1、创建Bucket</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E5%88%A4%E6%96%ADbucket%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">2、判断bucket是否存在</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3%E3%80%81%E8%AE%BE%E7%BD%AEbucket%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3、设置bucket访问权限</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
 
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="2021/06/">June 2021</a><span class="archive-list-count">3</span></li></ul>
-</div>
 
 
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#OSS" title="OSS">OSS</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
         <hr>
-    
-        <!-- Categories -->
+        <h5>链友</h5>
+        <ul class="list-inline">
 
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#编程">
-      <li>编程</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->

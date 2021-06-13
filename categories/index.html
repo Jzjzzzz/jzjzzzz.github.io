@@ -247,17 +247,6 @@
           
           
           <li>
-            <a href="/categories/">
-              
-              分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/about/">
               
               关于
@@ -269,9 +258,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -280,9 +269,20 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
               
               
             </a>
@@ -437,7 +437,7 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#编程" title="编程" rel="2">编程</a>
+        <a href="#编程" title="编程" rel="3">编程</a>
         
       </div>
 
@@ -447,6 +447,28 @@
         <span class="fa fa-tag listing-seperator" id="编程">
           <span class="tag-text">编程</span>
         </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/cn/使用SDK访问OSS/">
+            <h2 class="post-title">
+              使用SDK访问OSS
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              A succinct hexo theme...
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -998,5 +1020,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
