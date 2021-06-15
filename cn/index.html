@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -452,6 +452,43 @@
   <!-- top end -->
   
 
+  <a href="/cn/类加载子系统/">
+    <h2 class="post-title">
+      Java虚拟机_类加载子系统
+    </h2>
+    <h3 class="post-subtitle">
+      类加载子系统原理
+    </h3>
+    <div class="post-content-preview">
+      Java虚拟机_类加载子系统JVM架构图
+1.类加载子系统作用
+类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识；
+ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定
+加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区还会存放运行时常量池信息，可能还包括字符串字面量和数......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Jzj on
+    2021-06-15
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#JVM" title="JVM">JVM</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/初识Java虚拟机/">
     <h2 class="post-title">
       初识Java虚拟机
@@ -460,17 +497,14 @@
       JVM虚拟机的初步体验
     </h3>
     <div class="post-content-preview">
-      初识Java虚拟机
-JVM的位置
-一些JVM
-
+      初识Java虚拟机JVM的位置一些JVM
 SUN Classic
 Exact VM
 HotSpot VM ：HotSpot指热点代码探测技术
 BEA JRockit：(BEA 已被Oracle收购) 专注于服务端应用，世界最快的jvm之一
 IBM J9
 Taobao JVM: 目前已经在淘宝、天猫上线，替换了Oracle官方JVM；
-Graal VM: Oracle 2018年4月公开......
+Graal VM: Oracle 2018年4月公开，口号......
     </div>
   </a>
   
@@ -503,15 +537,10 @@ Graal VM: Oracle 2018年4月公开......
       Java虚拟机执行引擎原理
     </h3>
     <div class="post-content-preview">
-      执行引擎（Execution Engine）
-执行引擎概述
-
-
+      执行引擎（Execution Engine）执行引擎概述
 执行引擎是Java虚拟机的核心组成部分之一
-
-
 虚拟机是一个相对于“物理机”的概念，这两种机器都有代码执行能力，其区别是物理机的执行引擎是直接建立在处理器、缓存、指令集和操作系统层面上的，而虚拟机的执行引擎则是由软件自行实现的，因此可以不受物理条件制约地定制指令集与执行引擎的结构体系，能够执行那些不被硬件直接支持的指令集格式。
-......
+JVM的主......
     </div>
   </a>
   
@@ -544,18 +573,12 @@ Graal VM: Oracle 2018年4月公开......
       SpringBoot整合短信服务调用Api
     </h3>
     <div class="post-content-preview">
-      腾讯云短信服务
-1.在腾讯云短信服务上新建短信签名
-https://console.cloud.tencent.com/smsv2/guide
-
+      腾讯云短信服务1.在腾讯云短信服务上新建短信签名https://console.cloud.tencent.com/smsv2/guide
 2.新建短信模板
+3.获取腾讯云的API秘钥https://console.cloud.tencent.com/cam/capi
+4.开发指南https://cloud.tencent.com/document/product/382/38778
 
-3.获取腾讯云的API秘钥
-https://console.cloud.tencent.com/cam/capi
-
-
-4.开发指南
-https://cloud.tencent.com/document/product/382/3......
+5.......
     </div>
   </a>
   
@@ -588,19 +611,11 @@ https://cloud.tencent.com/document/product/382/3......
       阿里巴巴EasyExcel介绍和小demo的操作
     </h3>
     <div class="post-content-preview">
-      阿里巴巴EasyExcel使用
-一、Excel导入导出的应用场景
-1、数据导入
-减轻录入工作量
-2、数据导出
-统计信息归档
-3、数据传输
-异构系统之间数据传输
-二、EasyExcel简介
-常见excel分析框架：POI、EasyExcel
-1、官方网站
-https://github.com/alibaba/easyexcel
-快速开始：https://www.yuque.com/easyex......
+      阿里巴巴EasyExcel使用一、Excel导入导出的应用场景1、数据导入减轻录入工作量
+2、数据导出统计信息归档
+3、数据传输异构系统之间数据传输
+二、EasyExcel简介常见excel分析框架：POI、EasyExcel
+1、官方网站https://github.com/alibaba/easyexcel快速开始：https://www.yuque.com/easyexcel/doc/......
     </div>
   </a>
   
@@ -633,19 +648,9 @@ https://github.com/alibaba/easyexcel
       阿里云OSS的工具使用
     </h3>
     <div class="post-content-preview">
-      使用SDK访问OSS
-一、使用SDK
-在OSS的概览页右下角找到“Bucket管理”，点击“OSS学习路径”
-
-点击“Java SDK”进入SDK开发文档
-
-二、创建测试项目
-1、创建Maven项目
-com.jzj
-aliyun-oss
-2、配置pom
-
-12345678910111213&lt;dependencies&gt;    &lt;!--aliyunOSS--&gt;    &l......
+      使用SDK访问OSS一、使用SDK在OSS的概览页右下角找到“Bucket管理”，点击“OSS学习路径”点击“Java SDK”进入SDK开发文档
+二、创建测试项目1、创建Maven项目com.jzjaliyun-oss
+2、配置pom12345678910111213&lt;dependencies&gt;    &lt;!--aliyunOSS--&gt;    &lt;dependen......
     </div>
   </a>
   
@@ -678,25 +683,14 @@ aliyun-oss
       阿里云OSS存储介绍
     </h3>
     <div class="post-content-preview">
-      阿里云存储OSS
-一、开通“对象存储OSS”服务
-为了解决海量数据存储与弹性扩容，项目中我们采用云存储的解决方案- 阿里云OSS。
+      阿里云存储OSS一、开通“对象存储OSS”服务为了解决海量数据存储与弹性扩容，项目中我们采用云存储的解决方案- 阿里云OSS。
 1、开通“对象存储OSS”服务
-
 2、进入管理控制台
-
-二、控制台使用
-1、创建Bucket
-命名：srb-file
-读写权限：公共读
-2、上传默认头像
-创建文件夹avatar，上传默认的用户头像
-
-三、使用RAM子用户
-1、进入子用户管理页面
-
-
-2、添加用户......
+二、控制台使用1、创建Bucket   命名：srb-file   读写权限：公共读
+2、上传默认头像创建文件夹avatar，上传默认的用户头像
+三、使用RAM子用户1、进入子用户管理页面
+2、添加用户
+3、获取子......
     </div>
   </a>
   
@@ -730,9 +724,8 @@ aliyun-oss
     </h3>
     <div class="post-content-preview">
       前后端分离 SpringBoot整合SpringSecurity权限控制（动态拦截url）
-
 Spring Security是一个功能强大且可高度自定义的身份验证和访问控制框架。它是保护基于Spring的应用程序的事实上的标准。
-Spring Security是一个专注于为Java应用程序提供身份验证和授权的框架。与所有Spring项目一样，Spring Security的真正强大之处在于它......
+Spring Security是一个专注于为Java应用程序提供身份验证和授权的框架。与所有Spring项目一样，Spring Security的真正强大之处在于它可......
     </div>
   </a>
   
@@ -798,7 +791,7 @@ Spring Security是一个专注于为Java应用程序提供身份验证和授权�
     
     
     
-    <a href="/tags/#JVM" title="JVM" rel="2">JVM</a>
+    <a href="/tags/#JVM" title="JVM" rel="3">JVM</a>
     
     
     
@@ -873,6 +866,10 @@ Spring Security是一个专注于为Java应用程序提供身份验证和授权�
 <div class="widget">
   <ul>
     
+    <a href="%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
+      <li>Java虚拟机_类加载子系统</li>
+    </a>
+    
     <a href="%E5%88%9D%E8%AF%86Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
       <li>初识Java虚拟机</li>
     </a>
@@ -887,10 +884,6 @@ Spring Security是一个专注于为Java应用程序提供身份验证和授权�
     
     <a href="%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4EasyExcel%E4%BD%BF%E7%94%A8/">
       <li>阿里巴巴EasyExcel使用</li>
-    </a>
-    
-    <a href="%E4%BD%BF%E7%94%A8SDK%E8%AE%BF%E9%97%AEOSS/">
-      <li>使用SDK访问OSS</li>
     </a>
     
   </ul>
@@ -913,7 +906,7 @@ Spring Security是一个专注于为Java应用程序提供身份验证和授权�
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/06/">June 2021</a><span class="archive-list-count">7</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/06/">June 2021</a><span class="archive-list-count">8</span></li></ul>
 </div>
 
 
