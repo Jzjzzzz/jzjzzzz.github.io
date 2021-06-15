@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
+              分类
               
               
             </a>
@@ -280,9 +280,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -437,7 +437,7 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#编程" title="编程" rel="5">编程</a>
+        <a href="#编程" title="编程" rel="6">编程</a>
         
       </div>
 
@@ -529,6 +529,28 @@
             
             <h3 class="post-subtitle">
               阿里巴巴EasyExcel介绍和小demo的操作
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/cn/执行引擎/">
+            <h2 class="post-title">
+              Java虚拟机_执行引擎(Execution Engine)
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              Java虚拟机执行引擎原理
             </h3>
             
           </a>
@@ -1037,5 +1059,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
