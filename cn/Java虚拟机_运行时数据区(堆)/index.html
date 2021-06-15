@@ -244,6 +244,8 @@
 
           
           
+          
+          
           <li>
             <a href="/about/">
               
@@ -255,12 +257,10 @@
           
           
           
-          
-          
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -466,9 +466,7 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h1>Java虚拟机_运行时数据区(堆)</h1>
-<h2 id="1-核心概述">1.核心概述</h2>
-<p>一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。</p>
+        <h1 id="Java虚拟机-运行时数据区-堆"><a href="#Java虚拟机-运行时数据区-堆" class="headerlink" title="Java虚拟机_运行时数据区(堆)"></a>Java虚拟机_运行时数据区(堆)</h1><h2 id="1-核心概述"><a href="#1-核心概述" class="headerlink" title="1.核心概述"></a>1.核心概述</h2><p>一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。</p>
 <ol>
 <li>一个jvm实例只存在一个堆内存，堆也是java内存管理的核心区域</li>
 <li>Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间（堆内存的大小是可以调节的）</li>
@@ -477,8 +475,7 @@
 <li>《Java虚拟机规范》中对java堆的描述是：所有的对象实例以及数组都应当在运行时分配在堆上。</li>
 </ol>
 <ul>
-<li>
-<ul>
+<li><ul>
 <li>从实际使用的角度看，“几乎”所有的对象的实例都在这里分配内存 （‘几乎’是因为可能存储在栈上）</li>
 </ul>
 </li>
@@ -488,8 +485,7 @@
 <li>在方法结束后，堆中的对象不会马上被移除，仅仅在垃圾收集的时候才会被移除</li>
 <li>堆，是GC(Garbage Collection，垃圾收集器)执行垃圾回收的重点区域</li>
 </ol>
-<h3 id="1-1-配置jvm及查看jvm进程">1.1 配置jvm及查看jvm进程</h3>
-<ul>
+<h3 id="1-1-配置jvm及查看jvm进程"><a href="#1-1-配置jvm及查看jvm进程" class="headerlink" title="1.1 配置jvm及查看jvm进程"></a>1.1 配置jvm及查看jvm进程</h3><ul>
 <li>编写HeapDemo/HeapDemo1代码</li>
 </ul>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">![<span class="number">1</span>](<span class="number">1.</span>png)<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapDemo</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;start...&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.<span class="built_in">sleep</span>(<span class="number">1000000</span>);</span><br><span class="line">        &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">            e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;end...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -505,23 +501,18 @@
 <li>可以看到HeapDemo配置-Xms10m， 分配的10m被分配给了新生代3m和老年代7m</li>
 </ul>
 <p><img src="3.png" alt=""></p>
-<h3 id="1-2-分析SimpleHeap的jvm情况">1.2 分析SimpleHeap的jvm情况</h3>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleHeap</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//属性、成员变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleHeap</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;My ID is &quot;</span> + id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        SimpleHeap sl = <span class="keyword">new</span> <span class="built_in">SimpleHeap</span>(<span class="number">1</span>);</span><br><span class="line">        SimpleHeap s2 = <span class="keyword">new</span> <span class="built_in">SimpleHeap</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">        Object[] arr1 = <span class="keyword">new</span> Object[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="1-2-分析SimpleHeap的jvm情况"><a href="#1-2-分析SimpleHeap的jvm情况" class="headerlink" title="1.2 分析SimpleHeap的jvm情况"></a>1.2 分析SimpleHeap的jvm情况</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleHeap</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;<span class="comment">//属性、成员变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleHeap</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;My ID is &quot;</span> + id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        SimpleHeap sl = <span class="keyword">new</span> <span class="built_in">SimpleHeap</span>(<span class="number">1</span>);</span><br><span class="line">        SimpleHeap s2 = <span class="keyword">new</span> <span class="built_in">SimpleHeap</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">        Object[] arr1 = <span class="keyword">new</span> Object[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><img src="4.png" alt=""></p>
-<h3 id="1-3-堆的细分内存结构">1.3 堆的细分内存结构</h3>
-<ul>
-<li>
-<p>JDK 7以前： 新生区+养老区+永久区</p>
+<h3 id="1-3-堆的细分内存结构"><a href="#1-3-堆的细分内存结构" class="headerlink" title="1.3 堆的细分内存结构"></a>1.3 堆的细分内存结构</h3><ul>
+<li><p>JDK 7以前： 新生区+养老区+永久区</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>Young Generation Space：又被分为Eden区和Survior区  <strong>==Young/New==</strong></li>
 <li>Tenure generation Space：         ==<strong>Old/Tenure</strong>==</li>
 <li>Permanent Space：                 ==<strong>Perm</strong>==</li>
 </ul>
 </li>
-<li>
-<p><img src="5.png" alt=""></p>
+<li><p><img src="5.png" alt=""></p>
 </li>
 </ul>
 <p>JDK 8以后： 新生区+养老区+元空间</p>
@@ -531,31 +522,23 @@
 <li>Meta Space：                 ==Meta==</li>
 </ul>
 <p><img src="6.png" alt=""></p>
-<h2 id="2-设置堆内存大小与OOM">2.设置堆内存大小与OOM</h2>
-<ul>
-<li>
-<p>Java堆区用于存储java对象实例，堆的大小在jvm启动时就已经设定好了，可以通过 &quot;-Xmx&quot;和 &quot;-Xms&quot;来进行设置</p>
+<h2 id="2-设置堆内存大小与OOM"><a href="#2-设置堆内存大小与OOM" class="headerlink" title="2.设置堆内存大小与OOM"></a>2.设置堆内存大小与OOM</h2><ul>
+<li><p>Java堆区用于存储java对象实例，堆的大小在jvm启动时就已经设定好了，可以通过 “-Xmx”和 “-Xms”来进行设置</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>-Xms 用于表示堆的起始内存，等价于 -XX:InitialHeapSize</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>-Xms 用来设置堆空间（年轻代+老年代）的初始内存大小</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
+<li><ul>
 <li>-X 是jvm的运行参数</li>
 <li>ms 是memory start</li>
 </ul>
@@ -564,61 +547,44 @@
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>-Xmx 用于设置堆的最大内存，等价于 -XX:MaxHeapSize</li>
 </ul>
 </li>
-<li>
-<p>一旦堆区中的内存大小超过 -Xmx所指定的最大内存时，将会抛出OOM异常</p>
+<li><p>一旦堆区中的内存大小超过 -Xmx所指定的最大内存时，将会抛出OOM异常</p>
 </li>
-<li>
-<p>==通常会将-Xms和-Xmx两个参数配置相同的值，其目的就是为了能够在java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能==</p>
+<li>==通常会将-Xms和-Xmx两个参数配置相同的值，其目的就是为了能够在java垃圾回收机制清理完堆区后不需要重新分隔计算堆区的大小，从而提高性能==</li>
+<li><p>默认情况下，初始内存大小：物理内存大小/64;最大内存大小：物理内存大小/4</p>
 </li>
-<li>
-<p>默认情况下，初始内存大小：物理内存大小/64;最大内存大小：物理内存大小/4</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>手动设置：-Xms600m -Xmx600m</li>
 </ul>
 </li>
-<li>
-<p>查看设置的参数：</p>
+<li><p>查看设置的参数：</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>方式一： ==终端输入jps== ，  然后 ==jstat -gc 进程id==</li>
 <li>方式二：（控制台打印）Edit Configurations-&gt;VM Options 添加 ==-XX:+PrintGCDetails==</li>
 </ul>
 </li>
 </ul>
-<h3 id="2-1-查看堆内存大小">2.1 查看堆内存大小</h3>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> HeapSpaceInitial &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回Java虚拟机中的堆内存总量</span></span><br><span class="line">        long initialMemory = <span class="module-access"><span class="module"><span class="identifier">Runtime</span>.</span></span>get<span class="constructor">Runtime()</span>.total<span class="constructor">Memory()</span><span class="operator"> / </span><span class="number">1024</span><span class="operator"> / </span><span class="number">1024</span>;</span><br><span class="line">        <span class="comment">//返回Java虚拟机试图使用的最大堆内存量</span></span><br><span class="line">        long maxMemory = <span class="module-access"><span class="module"><span class="identifier">Runtime</span>.</span></span>get<span class="constructor">Runtime()</span>.max<span class="constructor">Memory()</span><span class="operator"> / </span><span class="number">1024</span><span class="operator"> / </span><span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;-Xms : &quot;</span> + initialMemory + <span class="string">&quot;M&quot;</span>);<span class="comment">//-Xms : 245M</span></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;-Xmx : &quot;</span> + maxMemory + <span class="string">&quot;M&quot;</span>);<span class="comment">//-Xmx : 3641M</span></span><br><span class="line"></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;系统内存大小为：&quot;</span> + initialMemory<span class="operator"> * </span><span class="number">64.0</span><span class="operator"> / </span><span class="number">1024</span> + <span class="string">&quot;G&quot;</span>);<span class="comment">//系统内存大小为：15.3125G</span></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;系统内存大小为：&quot;</span> + maxMemory<span class="operator"> * </span><span class="number">4.0</span><span class="operator"> / </span><span class="number">1024</span> + <span class="string">&quot;G&quot;</span>);<span class="comment">//系统内存大小为：14.22265625G</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="module-access"><span class="module"><span class="identifier">Thread</span>.</span></span>sleep(<span class="number">1000000</span>);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.print<span class="constructor">StackTrace()</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="2-2-堆大小分析">2.2 堆大小分析</h3>
-<p>设置堆大小为600m，打印出的结果为575m，这是因为幸存者区S0和S1各占据了25m，但是他们始终有一个是空的，存放对象的是伊甸园区和一个幸存者区</p>
+<h3 id="2-1-查看堆内存大小"><a href="#2-1-查看堆内存大小" class="headerlink" title="2.1 查看堆内存大小"></a>2.1 查看堆内存大小</h3><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">class</span> HeapSpaceInitial &#123;</span><br><span class="line">    public static void main(String<span class="literal">[]</span> args) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回Java虚拟机中的堆内存总量</span></span><br><span class="line">        long initialMemory = <span class="module-access"><span class="module"><span class="identifier">Runtime</span>.</span></span>get<span class="constructor">Runtime()</span>.total<span class="constructor">Memory()</span><span class="operator"> / </span><span class="number">1024</span><span class="operator"> / </span><span class="number">1024</span>;</span><br><span class="line">        <span class="comment">//返回Java虚拟机试图使用的最大堆内存量</span></span><br><span class="line">        long maxMemory = <span class="module-access"><span class="module"><span class="identifier">Runtime</span>.</span></span>get<span class="constructor">Runtime()</span>.max<span class="constructor">Memory()</span><span class="operator"> / </span><span class="number">1024</span><span class="operator"> / </span><span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;-Xms : &quot;</span> + initialMemory + <span class="string">&quot;M&quot;</span>);<span class="comment">//-Xms : 245M</span></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;-Xmx : &quot;</span> + maxMemory + <span class="string">&quot;M&quot;</span>);<span class="comment">//-Xmx : 3641M</span></span><br><span class="line"></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;系统内存大小为：&quot;</span> + initialMemory<span class="operator"> * </span><span class="number">64.0</span><span class="operator"> / </span><span class="number">1024</span> + <span class="string">&quot;G&quot;</span>);<span class="comment">//系统内存大小为：15.3125G</span></span><br><span class="line">        <span class="module-access"><span class="module"><span class="identifier">System</span>.</span></span>out.println(<span class="string">&quot;系统内存大小为：&quot;</span> + maxMemory<span class="operator"> * </span><span class="number">4.0</span><span class="operator"> / </span><span class="number">1024</span> + <span class="string">&quot;G&quot;</span>);<span class="comment">//系统内存大小为：14.22265625G</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="module-access"><span class="module"><span class="identifier">Thread</span>.</span></span>sleep(<span class="number">1000000</span>);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.print<span class="constructor">StackTrace()</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-堆大小分析"><a href="#2-2-堆大小分析" class="headerlink" title="2.2 堆大小分析"></a>2.2 堆大小分析</h3><p>设置堆大小为600m，打印出的结果为575m，这是因为幸存者区S0和S1各占据了25m，但是他们始终有一个是空的，存放对象的是伊甸园区和一个幸存者区</p>
 <p><img src="7.png" alt=""></p>
-<h3 id="2-3-OOM">2.3 OOM</h3>
-<p>java.lang.OutOfMemoryError: Java heap space</p>
+<h3 id="2-3-OOM"><a href="#2-3-OOM" class="headerlink" title="2.3 OOM"></a>2.3 OOM</h3><p>java.lang.OutOfMemoryError: Java heap space</p>
 <p>代码示例：</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * -Xms600m -Xmx600m</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OOMTest</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Picture&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.<span class="built_in">sleep</span>(<span class="number">20</span>);</span><br><span class="line">            &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">                e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            list.<span class="built_in">add</span>(<span class="keyword">new</span> <span class="built_in">Picture</span>(<span class="keyword">new</span> <span class="built_in">Random</span>().<span class="built_in">nextInt</span>(<span class="number">1024</span> * <span class="number">1024</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Picture</span>&#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] pixels;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Picture</span><span class="params">(<span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pixels = <span class="keyword">new</span> <span class="keyword">byte</span>[length];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="3-年轻代与老年代">3.年轻代与老年代</h2>
-<ul>
-<li>
-<p>存储在JVM中的java对象可以被划分为两类：</p>
+<h2 id="3-年轻代与老年代"><a href="#3-年轻代与老年代" class="headerlink" title="3.年轻代与老年代"></a>3.年轻代与老年代</h2><ul>
+<li><p>存储在JVM中的java对象可以被划分为两类：</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>一类是生命周期较短的瞬时对象，这类对象的创建和消亡都非常迅速</li>
 <li>另外一类对象时生命周期非常长，在某些情况下还能与JVM的生命周期保持一致</li>
 </ul>
 </li>
-<li>
-<p>Java堆区进一步细分可以分为年轻代（YoungGen）和老年代（OldGen）</p>
+<li><p>Java堆区进一步细分可以分为年轻代（YoungGen）和老年代（OldGen）</p>
 </li>
-<li>
-<p>其中年轻代可以分为Eden空间、Survivor0空间和Survivor1空间（有时也叫frmo区，to区）</p>
-</li>
+<li>其中年轻代可以分为Eden空间、Survivor0空间和Survivor1空间（有时也叫frmo区，to区）</li>
 </ul>
 <p><img src="8.png" alt=""></p>
 <p>配置新生代与老年代在堆结构的占比</p>
@@ -635,8 +601,7 @@
 </ul>
 <p><strong>测试代码</strong></p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * -Xms600m -Xmx600m</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * -XX:NewRatio ： 设置新生代与老年代的比例。默认值是2.</span></span><br><span class="line"><span class="comment"> * -XX:SurvivorRatio ：设置新生代中Eden区与Survivor区的比例。默认值是8</span></span><br><span class="line"><span class="comment"> * -XX:-UseAdaptiveSizePolicy ：关闭自适应的内存分配策略 &#x27;-&#x27;关闭,&#x27;+&#x27;打开  （暂时用不到）</span></span><br><span class="line"><span class="comment"> * -Xmn:设置新生代的空间的大小。 （一般不设置）</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EdenSurvivorTest</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;我只是来打个酱油~&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.<span class="built_in">sleep</span>(<span class="number">1000000</span>);</span><br><span class="line">        &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">            e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-图解对象分配过程">4.图解对象分配过程</h2>
-<p>为新对象分配内存是件非常严谨和复杂的任务，JVM的设计者们不仅需要考虑内存如何分配、在哪里分配的问题，并且由于内存分配算法与内存回收算法密切相关，所以还需要考虑GC执行完内存回收后是否会在内存空间中产生内存碎片。</p>
+<h2 id="4-图解对象分配过程"><a href="#4-图解对象分配过程" class="headerlink" title="4.图解对象分配过程"></a>4.图解对象分配过程</h2><p>为新对象分配内存是件非常严谨和复杂的任务，JVM的设计者们不仅需要考虑内存如何分配、在哪里分配的问题，并且由于内存分配算法与内存回收算法密切相关，所以还需要考虑GC执行完内存回收后是否会在内存空间中产生内存碎片。</p>
 <ol>
 <li>new的对象先放伊甸园区。此区有大小限制。</li>
 <li>当伊甸园的空间填满时，程序又需要创建对象，JVM的垃圾回收器将对伊甸园区进行垃圾回收（Minor GC),将伊甸园区中的不再被其他对象所引用的对象进行销毁。再加载新的对象放到伊甸园区</li>
@@ -651,14 +616,11 @@
 <p>==<strong>针对幸存者s0,s1区：复制之后有交换，谁空谁是to</strong>==</p>
 <p>==<strong>关于垃圾回收：频繁在新生区收集，很少在养老区收集，几乎不再永久区/元空间收集。</strong>==</p>
 <p><img src="10.png" alt=""></p>
-<h3 id="4-2-对象分配的特殊情况">4.2 对象分配的特殊情况</h3>
-<p><img src="11.png" alt=""></p>
-<h3 id="4-3-代码举例">4.3 代码举例</h3>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapInstanceTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="keyword">new</span> <span class="built_in">Random</span>().<span class="built_in">nextInt</span>(<span class="number">1024</span> * <span class="number">200</span>)];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;HeapInstanceTest&gt; list = <span class="keyword">new</span> ArrayList&lt;HeapInstanceTest&gt;();</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            list.<span class="built_in">add</span>(<span class="keyword">new</span> <span class="built_in">HeapInstanceTest</span>());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.<span class="built_in">sleep</span>(<span class="number">10</span>);</span><br><span class="line">            &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">                e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-对象分配的特殊情况"><a href="#4-2-对象分配的特殊情况" class="headerlink" title="4.2 对象分配的特殊情况"></a>4.2 对象分配的特殊情况</h3><p><img src="11.png" alt=""></p>
+<h3 id="4-3-代码举例"><a href="#4-3-代码举例" class="headerlink" title="4.3 代码举例"></a>4.3 代码举例</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapInstanceTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="keyword">new</span> <span class="built_in">Random</span>().<span class="built_in">nextInt</span>(<span class="number">1024</span> * <span class="number">200</span>)];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;HeapInstanceTest&gt; list = <span class="keyword">new</span> ArrayList&lt;HeapInstanceTest&gt;();</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            list.<span class="built_in">add</span>(<span class="keyword">new</span> <span class="built_in">HeapInstanceTest</span>());</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.<span class="built_in">sleep</span>(<span class="number">10</span>);</span><br><span class="line">            &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">                e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>对应堆空间分配过程</strong></p>
 <p><img src="12.png" alt=""></p>
-<h3 id="4-4-常用调优工具">4.4 常用调优工具</h3>
-<ul>
+<h3 id="4-4-常用调优工具"><a href="#4-4-常用调优工具" class="headerlink" title="4.4 常用调优工具"></a>4.4 常用调优工具</h3><ul>
 <li>JDK命令行</li>
 <li>Eclipse：Memory Analyzer Tool</li>
 <li>Jconsole</li>
@@ -668,94 +630,74 @@
 <li>GCViewer</li>
 <li>GC Easy</li>
 </ul>
-<h2 id="5-Minor-GC、Major-GC、Full-GC">5.Minor GC、Major GC、Full GC</h2>
-<blockquote>
+<h2 id="5-Minor-GC、Major-GC、Full-GC"><a href="#5-Minor-GC、Major-GC、Full-GC" class="headerlink" title="5.Minor GC、Major GC、Full GC"></a>5.Minor GC、Major GC、Full GC</h2><blockquote>
 <p>JVM在进行GC时，并非每次都针对上面三个内存区域（新生代、老年代、方法区）一起回收的，大部分时候回收都是指新生代。</p>
 </blockquote>
 <p>针对hotSpot VM的实现，它里面的GC按照回收区域又分为两大种类型：一种是部分收集（Partial GC），一种是整堆收集（Full GC）</p>
 <ul>
-<li>
-<p>部分收集：不是完整收集整个Java堆的垃圾收集。其中又分为：</p>
+<li><p>部分收集：不是完整收集整个Java堆的垃圾收集。其中又分为：</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>新生代收集（Minor GC/Young GC）：只是新生代的垃圾收集</li>
 <li>老年代收集（Major GC/Old GC）：只是老年代的垃圾收集</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>目前，只有CMS GC会有单独收集老年代的行为</li>
 <li>注意，==很多时候Major GC 会和 Full GC混淆使用，需要具体分辨是老年代回收还是整堆回收==</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>混合收集（Mixed GC）：收集整个新生代以及部分老年代的垃圾收集</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>目前，之后G1 GC会有这种行为</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>整堆收集（Full GC）：收集整个java堆和方法区的垃圾收集</p>
+<li><p>整堆收集（Full GC）：收集整个java堆和方法区的垃圾收集</p>
 </li>
-<li>
-<p><strong>年轻代GC（Minor GC）触发机制</strong>：</p>
+<li><p><strong>年轻代GC（Minor GC）触发机制</strong>：</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>当年轻代空间不足时，就会触发Minor GC，这里的年轻代满指的是Eden代满，Survivor满不会引发GC.(每次Minor GC会清理年轻代的内存，Survivor是被动GC，不会主动GC)</li>
 <li>因为Java队形大多都具备朝生夕灭的特性，所以Monor GC 非常频繁，一般回收速度也比较快，这一定义既清晰又利于理解。</li>
 <li>Minor GC 会引发STW（Stop the World），暂停其他用户的线程，等垃圾回收结束，用户线程才恢复运行。</li>
 </ul>
 </li>
-<li>
-<p><strong>老年代GC(Major GC/Full GC)触发机制</strong></p>
+<li><p><strong>老年代GC(Major GC/Full GC)触发机制</strong></p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>指发生在老年代的GC,对象从老年代消失时，Major GC 或者 Full GC 发生了</li>
 <li>出现了Major GC，经常会伴随至少一次的Minor GC（不是绝对的，在Parallel Scavenge 收集器的收集策略里就有直接进行Major GC的策略选择过程）</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>也就是老年代空间不足时，会先尝试触发Minor GC。如果之后空间还不足，则触发Major GC</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>Major GC速度一般会比Minor GC慢10倍以上，STW时间更长</li>
 <li>如果Major GC后，内存还不足，就报OOM了</li>
 </ul>
 </li>
-<li>
-<p><strong>Full GC触发机制</strong></p>
+<li><p><strong>Full GC触发机制</strong></p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>触发Full GC执行的情况有以下五种</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>①调用System.gc()时，系统建议执行Full GC，但是不必然执行</li>
 <li>②老年代空间不足</li>
 <li>③方法区空间不足</li>
@@ -765,101 +707,79 @@
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>说明：Full GC 是开发或调优中尽量要避免的，这样暂停时间会短一些</li>
 </ul>
 </li>
-<li>
-<p><img src="13.png" alt=""></p>
+<li><p><img src="13.png" alt=""></p>
 </li>
 </ul>
-<h3 id="代码演示">代码演示</h3>
-<p>Young GC -&gt;Full GC -&gt; OOM</p>
+<h3 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h3><p>Young GC -&gt;Full GC -&gt; OOM</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 测试GC分代回收</span></span><br><span class="line"><span class="comment"> * 测试MinorGC 、 MajorGC、FullGC</span></span><br><span class="line"><span class="comment"> * -Xms9m -Xmx9m -XX:+PrintGCDetails</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GCTest</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            List&lt;<span class="keyword">String</span>&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">String</span> a = <span class="string">&quot;testGC&quot;</span>;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                list.<span class="built_in">add</span>(a);</span><br><span class="line">                a = a + a;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="built_in"><span class="keyword">catch</span></span> (Throwable t) &#123;</span><br><span class="line">            t.<span class="built_in">printStackTrace</span>();</span><br><span class="line">            System.out.<span class="built_in">println</span>(<span class="string">&quot;遍历次数为：&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>日志输出</strong></p>
 <p><img src="14.png" alt=""></p>
-<h2 id="6-堆空间分代思想">6.堆空间分代思想</h2>
-<p>为什么要把Java堆分代？不分代就不能正常工作了么</p>
+<h2 id="6-堆空间分代思想"><a href="#6-堆空间分代思想" class="headerlink" title="6.堆空间分代思想"></a>6.堆空间分代思想</h2><p>为什么要把Java堆分代？不分代就不能正常工作了么</p>
 <ul>
-<li>
-<p>经研究，不同对象的生命周期不同。70%-99%的对象都是临时对象。</p>
+<li><p>经研究，不同对象的生命周期不同。70%-99%的对象都是临时对象。</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>新生代：有Eden、Survivor构成（s0,s1 又称为from to），to总为空</li>
 <li>老年代：存放新生代中经历多次依然存活的对象</li>
 </ul>
 </li>
-<li>
-<p>其实不分代完全可以，分代的唯一理由就是优化GC性能。如果没有分代，那所有的对象都在一块，就如同把一个学校的人都关在一个教室。GC的时候要找到哪些对象没用，这样就会对堆的所有区域进行扫描，而很多对象都是朝生夕死的，如果分代的话，把新创建的对象放到某一地方，当GC的时候先把这块存储“朝生夕死”对象的区域进行回收，这样就会腾出很大的空间出来</p>
+<li><p>其实不分代完全可以，分代的唯一理由就是优化GC性能。如果没有分代，那所有的对象都在一块，就如同把一个学校的人都关在一个教室。GC的时候要找到哪些对象没用，这样就会对堆的所有区域进行扫描，而很多对象都是朝生夕死的，如果分代的话，把新创建的对象放到某一地方，当GC的时候先把这块存储“朝生夕死”对象的区域进行回收，这样就会腾出很大的空间出来</p>
 </li>
 </ul>
-<h2 id="7-内存分配策略">7.内存分配策略</h2>
-<ul>
-<li>
-<p>如果对象在Eden出生并经过第一次Minor GC后依然存活，并且能被Survivor容纳的话，将被移动到Survivor空间中，把那个将对象年龄设为1.对象在Survivor区中每熬过一次MinorGC，年龄就增加一岁，当它的年龄增加到一定程度（默认15岁，其实每个JVM、每个GC都有所不同）时，就会被晋升到老年代中</p>
+<h2 id="7-内存分配策略"><a href="#7-内存分配策略" class="headerlink" title="7.内存分配策略"></a>7.内存分配策略</h2><ul>
+<li><p>如果对象在Eden出生并经过第一次Minor GC后依然存活，并且能被Survivor容纳的话，将被移动到Survivor空间中，把那个将对象年龄设为1.对象在Survivor区中每熬过一次MinorGC，年龄就增加一岁，当它的年龄增加到一定程度（默认15岁，其实每个JVM、每个GC都有所不同）时，就会被晋升到老年代中</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>对象晋升老年代的年龄阈值，可以通过选项 -XX：MaxTenuringThreshold来设置</li>
 </ul>
 </li>
-<li>
-<p>针对不同年龄段的对象分配原则如下：</p>
+<li><p>针对不同年龄段的对象分配原则如下：</p>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>优先分配到Eden</li>
 <li>大对象直接分配到老年代</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>尽量避免程序中出现过多的大对象</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>长期存活的对象分配到老年代</li>
 <li>动态对象年龄判断</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>如果Survivor区中相同年龄的所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象可以直接进入到老年代。无需等到MaxTenuringThreshold中要求的年龄</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>空间分配担保</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>-XX: HandlePromotionFailure</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="代码示例">代码示例</h3>
-<p>分配60m堆空间，新生代 20m ，Eden 16m， s0 2m， s1 2m，buffer对象20m，Eden 区无法存放buffer，  直接晋升老年代</p>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>分配60m堆空间，新生代 20m ，Eden 16m， s0 2m， s1 2m，buffer对象20m，Eden 区无法存放buffer，  直接晋升老年代</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 测试：大对象直接进入老年代</span></span><br><span class="line"><span class="comment"> * -Xms60m -Xmx60m -XX:NewRatio=2 -XX:SurvivorRatio=8 -XX:+PrintGCDetails</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YoungOldAreaTest</span> &#123;</span></span><br><span class="line">    <span class="comment">// 新生代 20m ，Eden 16m， s0 2m， s1 2m</span></span><br><span class="line">    <span class="comment">// 老年代 40m</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Eden 区无法存放buffer  晋升老年代</span></span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">1024</span> * <span class="number">20</span>];<span class="comment">//20m</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>日志输出</strong></p>
 <p><img src="15.png" alt=""></p>
-<h2 id="8-为对象分配内存：TLAB（线程私有缓存区域）">8.为对象分配内存：TLAB（线程私有缓存区域）</h2>
-<p><img src="16.png" alt=""></p>
+<h2 id="8-为对象分配内存：TLAB（线程私有缓存区域）"><a href="#8-为对象分配内存：TLAB（线程私有缓存区域）" class="headerlink" title="8.为对象分配内存：TLAB（线程私有缓存区域）"></a>8.为对象分配内存：TLAB（线程私有缓存区域）</h2><p><img src="16.png" alt=""></p>
 <p><strong>为什么有TLAB（Thread Local Allocation Buffer）</strong></p>
 <ul>
 <li>堆区是线程共享区域，任何线程都可以访问到堆区中的共享数据</li>
@@ -879,144 +799,96 @@
 <li>默认情况下，TLAB空间的内存非常小，仅占有整个EDen空间的1%，当然我们可以通过选项 ”-XX:TLABWasteTargetPercent“ 设置TLAB空间所占用Eden空间的百分比大小</li>
 <li>一旦对象在TLAB空间分配内存失败时，JVM就会尝试着通过使用加锁机制确保数据操作的原子性，从而直接在Eden空间中分配了内存</li>
 </ul>
-<h3 id="代码演示-2">代码演示</h3>
-<ul>
+<h3 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h3><ul>
 <li>终端输入 jsp，查看TLABArgsTest进程id</li>
 <li>jinfo -flag UseTLAB 64566（进程id），输出-XX:+UseTLAB，证明TLAB默认是开启的</li>
 </ul>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试-XX:UseTLAB参数是否开启的情况:默认情况是开启的</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TLABArgsTest</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;我只是来打个酱油~&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.<span class="built_in">sleep</span>(<span class="number">1000000</span>);</span><br><span class="line">        &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e) &#123;</span><br><span class="line">            e.<span class="built_in">printStackTrace</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><img src="17.png" alt=""></p>
-<h3 id="TLAB对象分配过程">TLAB对象分配过程</h3>
-<p><img src="18.png" alt=""></p>
-<h2 id="9-小结堆空间的参数设置">9.小结堆空间的参数设置</h2>
-<ul>
-<li>
-<p>-XX:PrintFlagsInitial: 查看所有参数的默认初始值</p>
+<h3 id="TLAB对象分配过程"><a href="#TLAB对象分配过程" class="headerlink" title="TLAB对象分配过程"></a>TLAB对象分配过程</h3><p><img src="18.png" alt=""></p>
+<h2 id="9-小结堆空间的参数设置"><a href="#9-小结堆空间的参数设置" class="headerlink" title="9.小结堆空间的参数设置"></a>9.小结堆空间的参数设置</h2><ul>
+<li>-XX:PrintFlagsInitial: 查看所有参数的默认初始值</li>
+<li><p>-XX:PrintFlagsFinal：查看所有的参数的最终值（可能会存在修改，不再是初始值）</p>
 </li>
-<li>
-<p>-XX:PrintFlagsFinal：查看所有的参数的最终值（可能会存在修改，不再是初始值）</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>具体查看某个参数的指令：</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>jps：查看当前运行中的进程</li>
 <li>jinfo -flag SurvivorRatio 进程id： 查看新生代中Eden和S0/S1空间的比例</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>-Xms: 初始堆空间内存（默认为物理内存的1/64）</p>
+<li><p>-Xms: 初始堆空间内存（默认为物理内存的1/64）</p>
 </li>
-<li>
-<p>-Xmx: 最大堆空间内存（默认为物理内存的1/4）</p>
+<li>-Xmx: 最大堆空间内存（默认为物理内存的1/4）</li>
+<li>-Xmn: 设置新生代大小（初始值及最大值）</li>
+<li>-XX:NewRatio: 配置新生代与老年代在堆结构的占比</li>
+<li>-XX:SurvivorRatio：设置新生代中Eden和S0/S1空间的比例</li>
+<li>-XX:MaxTenuringThreshold：设置新生代垃圾的最大年龄(默认15)</li>
+<li><p>-XX:+PrintGCDetails：输出详细的GC处理日志</p>
 </li>
-<li>
-<p>-Xmn: 设置新生代大小（初始值及最大值）</p>
-</li>
-<li>
-<p>-XX:NewRatio: 配置新生代与老年代在堆结构的占比</p>
-</li>
-<li>
-<p>-XX:SurvivorRatio：设置新生代中Eden和S0/S1空间的比例</p>
-</li>
-<li>
-<p>-XX:MaxTenuringThreshold：设置新生代垃圾的最大年龄(默认15)</p>
-</li>
-<li>
-<p>-XX:+PrintGCDetails：输出详细的GC处理日志</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>打印gc简要信息：① -XX:+PrintGC   ② -verbose:gc</li>
 </ul>
 </li>
-<li>
-<p>-XX:HandlePromotionFailure：是否设置空间分配担保</p>
+<li><p>-XX:HandlePromotionFailure：是否设置空间分配担保</p>
 </li>
 </ul>
-<h4 id="说明">说明</h4>
-<p>在发生Minor Gc之前，虚拟机会检查老年代最大可用的连续空间是否大于新生代所有对象的总空间。</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>在发生Minor Gc之前，虚拟机会检查老年代最大可用的连续空间是否大于新生代所有对象的总空间。</p>
 <ul>
-<li>
-<p>如果大于，则此次Minor GC是安全的</p>
+<li>如果大于，则此次Minor GC是安全的</li>
+<li><p>如果小于，则虚拟机会查看-XX:HandlePromotionFailure设置值是否允许担保失败。（==JDK 7以后的规则HandlePromotionFailure可以认为就是true==）</p>
 </li>
-<li>
-<p>如果小于，则虚拟机会查看-XX:HandlePromotionFailure设置值是否允许担保失败。（==JDK 7以后的规则HandlePromotionFailure可以认为就是true==）</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>如果HandlePromotionFailure=true,那么会继续检查老年代最大可用连续空间是否大于历次晋升到老年代的对象的平均大小。</li>
 </ul>
 </li>
-<li>
-<ul>
-<li>
-<ul>
+<li><ul>
+<li><ul>
 <li>√如果大于，则尝试进行一次Minor GC,但这次Minor GC依然是有风险的；</li>
 <li>√如果小于，则改为进行一次Fu11 GC。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<ul>
+<li><ul>
 <li>√如果HandlePromotionFailure=false,则改为进行一次Fu11 GC。</li>
 </ul>
 </li>
 </ul>
 <p>在JDK6 Update24之后（JDK7），HandlePromotionFailure参数不会再影响到虚拟机的空间分配担保策略，观察openJDK中的源码变化，虽然源码中还定义了HandlePromotionFailure参数，但是在代码中已经不会再使用它。JDK6 Update24之后的规则变为==只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大小就会进行Minor GC,否则将进行Full GC。==</p>
-<h2 id="10-堆是分配对象的唯一选择么（不是）">10.堆是分配对象的唯一选择么（不是）</h2>
-<p>在《深入理解Java虚拟机》中关于Java堆内存有这样一段描述：随着JIT编译期的发展与逃逸分析技术逐渐成熟，==栈上分配、标量替换优化技术==将会导致一些微妙的变化，所有的对象都分配到堆上也渐渐变得不那么“绝对”了。</p>
-<p>在Java虚拟机中，对象是在Java堆中分配内存的，这是一个普遍的常识。但是，有一种特殊情况，那就是如果==经过逃逸分析（Escape Analysis)后发现，一个对象并没有逃逸出方法的话，那么就可能被优化成栈上分配==。这样就无需在堆上分配内存，也无须进行垃圾回收了。这也是最常见的堆外存储技术。</p>
-<p>此外，前面提到的基于OpenJDK深度定制的TaoBaoVM,其中创新的GCIH(GCinvisible heap)技术实现off-heap,将生命周期较长的Java对象从heap中移至heap外，并且GC不能管理GCIH内部的Java对象，以此达到降低GC的回收频率和提升GC的回收效率的目的。</p>
+<h2 id="10-堆是分配对象的唯一选择么（不是）"><a href="#10-堆是分配对象的唯一选择么（不是）" class="headerlink" title="10.堆是分配对象的唯一选择么（不是）"></a>10.堆是分配对象的唯一选择么（不是）</h2><p>  在《深入理解Java虚拟机》中关于Java堆内存有这样一段描述：随着JIT编译期的发展与逃逸分析技术逐渐成熟，==栈上分配、标量替换优化技术==将会导致一些微妙的变化，所有的对象都分配到堆上也渐渐变得不那么“绝对”了。</p>
+<p>  在Java虚拟机中，对象是在Java堆中分配内存的，这是一个普遍的常识。但是，有一种特殊情况，那就是如果==经过逃逸分析（Escape Analysis)后发现，一个对象并没有逃逸出方法的话，那么就可能被优化成栈上分配==。这样就无需在堆上分配内存，也无须进行垃圾回收了。这也是最常见的堆外存储技术。</p>
+<p>  此外，前面提到的基于OpenJDK深度定制的TaoBaoVM,其中创新的GCIH(GCinvisible heap)技术实现off-heap,将生命周期较长的Java对象从heap中移至heap外，并且GC不能管理GCIH内部的Java对象，以此达到降低GC的回收频率和提升GC的回收效率的目的。</p>
 <ul>
-<li>
-<p>如何将堆上的对象分配到栈，需要使用逃逸分析手段。</p>
+<li>如何将堆上的对象分配到栈，需要使用逃逸分析手段。</li>
+<li>这是一种可以有效减少Java程序中同步负载和内存堆分配压力的跨函数全局数据流分析算法。</li>
+<li>通过逃逸分析，Java Hotspot编译器能够分析出一个新的对象的引用的使用范围从而决定是否要将这个对象分配到堆上。</li>
+<li><p>逃逸分析的基本行为就是分析对象动态作用域：</p>
 </li>
-<li>
-<p>这是一种可以有效减少Java程序中同步负载和内存堆分配压力的跨函数全局数据流分析算法。</p>
-</li>
-<li>
-<p>通过逃逸分析，Java Hotspot编译器能够分析出一个新的对象的引用的使用范围从而决定是否要将这个对象分配到堆上。</p>
-</li>
-<li>
-<p>逃逸分析的基本行为就是分析对象动态作用域：</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>当一个对象在方法中被定义后，==对象只在方法内部使用，则认为没有发生逃逸==。</li>
 <li>当一个对象在方法中被定义后，它被外部方法所引用，则认为发生逃逸。例如作为调用参数传递到其他地方中。</li>
 </ul>
 </li>
-<li>
-<p>==如何快速的判断是否发生了逃逸分析，就看new的对象实体是否有可能在方法外被调用==</p>
+<li><p>==如何快速的判断是否发生了逃逸分析，就看new的对象实体是否有可能在方法外被调用==</p>
 </li>
 </ul>
-<h3 id="代码分析">代码分析</h3>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> void <span class="function"><span class="keyword">method</span><span class="params">()</span><span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    V v = new V();</span></span></span><br><span class="line"><span class="function"><span class="comment">    //use V</span></span></span><br><span class="line"><span class="function"><span class="comment">    //......</span></span></span><br><span class="line"><span class="function"><span class="comment">    v = null;</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> void <span class="function"><span class="keyword">method</span><span class="params">()</span><span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    V v = new V();</span></span></span><br><span class="line"><span class="function"><span class="comment">    //use V</span></span></span><br><span class="line"><span class="function"><span class="comment">    //......</span></span></span><br><span class="line"><span class="function"><span class="comment">    v = null;</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br></pre></td></tr></table></figure>
 <p>没有发生逃逸的对象，则可以分配到栈上，随着方法执行的结束，栈空间就被移除。</p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">public</span> static StringBuffer createStringBuffer(String <span class="built_in">s1</span>,String <span class="built_in">s2</span>)&#123;</span><br><span class="line">    StringBuffer <span class="built_in">sb</span> = new StringBuffer()<span class="comment">;</span></span><br><span class="line">    <span class="built_in">sb</span>.append(<span class="built_in">s1</span>)<span class="comment">;</span></span><br><span class="line">    <span class="built_in">sb</span>.append(<span class="built_in">s2</span>)<span class="comment">;</span></span><br><span class="line">    return <span class="built_in">sb</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于上述方法返回的sb在方法外被使用，发生了逃逸，上述代码如果想要StringBuffer sb不逃出方法，可以这样写：</p>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">String</span> createStringBuffer(<span class="keyword">String</span> s1,<span class="keyword">String</span> s2)&#123;</span><br><span class="line">    StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    sb.<span class="built_in">append</span>(s1);</span><br><span class="line">    sb.<span class="built_in">append</span>(s2);</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="逃逸分析">逃逸分析</h4>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 逃逸分析</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  如何快速的判断是否发生了逃逸分析，就看new的对象实体是否有可能在方法外被调用。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EscapeAnalysis</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    方法返回EscapeAnalysis对象，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis <span class="function"><span class="title">getInstance</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj == <span class="literal">null</span>? <span class="keyword">new</span> EscapeAnalysis() : obj;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    为成员属性赋值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">setObj</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.obj = <span class="keyword">new</span> EscapeAnalysis();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//思考：如果当前的obj引用声明为static的？仍然会发生逃逸。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    对象的作用域仅在当前方法中有效，没有发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">useEscapeAnalysis</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        EscapeAnalysis e = <span class="keyword">new</span> EscapeAnalysis();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    引用成员变量的值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">useEscapeAnalysis1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        EscapeAnalysis e = getInstance();</span><br><span class="line">        <span class="comment">//getInstance().xxx()同样会发生逃逸</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="参数设置">参数设置</h3>
-<ul>
-<li>
-<p>在JDK 6u23版本之后，HotSpot中默认就已经开启了逃逸分析</p>
+<h4 id="逃逸分析"><a href="#逃逸分析" class="headerlink" title="逃逸分析"></a>逃逸分析</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 逃逸分析</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  如何快速的判断是否发生了逃逸分析，就看new的对象实体是否有可能在方法外被调用。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EscapeAnalysis</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    方法返回EscapeAnalysis对象，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> EscapeAnalysis <span class="function"><span class="title">getInstance</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> obj == <span class="literal">null</span>? <span class="keyword">new</span> EscapeAnalysis() : obj;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    为成员属性赋值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">setObj</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.obj = <span class="keyword">new</span> EscapeAnalysis();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//思考：如果当前的obj引用声明为static的？仍然会发生逃逸。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    对象的作用域仅在当前方法中有效，没有发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">useEscapeAnalysis</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        EscapeAnalysis e = <span class="keyword">new</span> EscapeAnalysis();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    引用成员变量的值，发生逃逸</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">useEscapeAnalysis1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        EscapeAnalysis e = getInstance();</span><br><span class="line">        <span class="comment">//getInstance().xxx()同样会发生逃逸</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h3><ul>
+<li>在JDK 6u23版本之后，HotSpot中默认就已经开启了逃逸分析</li>
+<li><p>如果使用了较早的版本，开发人员可以通过</p>
 </li>
-<li>
-<p>如果使用了较早的版本，开发人员可以通过</p>
-</li>
-<li>
-<ul>
+<li><ul>
 <li>-XX:DoEscapeAnalysis 显式开启逃逸分析</li>
 <li>-XX:+PrintEscapeAnalysis查看逃逸分析的筛选结果</li>
 </ul>
@@ -1024,29 +896,25 @@
 </ul>
 <p><strong>结论</strong></p>
 <p>开发中能使用局部变量的，就不要使用在方法外定义</p>
-<h3 id="代码优化">代码优化</h3>
-<p>使用逃逸分析，编译器可以对代码做如下优化：</p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p>使用逃逸分析，编译器可以对代码做如下优化：</p>
 <ol>
 <li>栈上分配：将堆分配转化为栈分配。如果一个对象在子线程中被分配，要使指向该对象的指针永远不会逃逸，对象可能是栈分配的候选，而不是堆分配</li>
 <li>同步省略：如果一个对象被发现只能从一个线程被访问到，那么对于这个对象的操作可以不考虑同步</li>
 <li>分离对象或标量替换：有的对象可能不需要作为一个连续的内存结构存在也可以北方问道，那么对象的部分（或全部）可以不存储在内存，而是存储在CPU寄存器中。</li>
 </ol>
-<h4 id="栈上分配">栈上分配</h4>
-<ul>
+<h4 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h4><ul>
 <li>JIT编译器在编译期间根据逃逸分析的结果，发现如果一个对象并没有逃逸出方法的话，就可能被优化成栈上分配。分配完成之后，继续在调用栈内执行，最后线程结束，栈空间被回收，局部变量对象也被回收。这样就无须机型垃圾回收了</li>
 <li>常见的栈上分配场景：给成员变量赋值、方法返回值、实例引用传递</li>
 </ul>
 <p><strong>代码分析</strong></p>
 <p>以下代码，关闭逃逸分析（-XX:-DoEscapeAnalysi），维护10000000个对象，如果开启逃逸分析，只维护少量对象（JDK7 逃逸分析默认开启）</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 栈上分配测试</span></span><br><span class="line"><span class="comment"> * -Xmx1G -Xms1G -XX:-DoEscapeAnalysis -XX:+PrintGCDetails</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackAllocation</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.<span class="built_in">currentTimeMillis</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">alloc</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 查看执行时间</span></span><br><span class="line">        <span class="keyword">long</span> end = System.<span class="built_in">currentTimeMillis</span>();</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;花费的时间为： &quot;</span> + (end - start) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">        <span class="comment">// 为了方便查看堆内存中对象个数，线程sleep</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.<span class="built_in">sleep</span>(<span class="number">1000000</span>);</span><br><span class="line">        &#125; <span class="built_in"><span class="keyword">catch</span></span> (InterruptedException e1) &#123;</span><br><span class="line">            e1.<span class="built_in">printStackTrace</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">alloc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        User user = <span class="keyword">new</span> <span class="built_in">User</span>();<span class="comment">//未发生逃逸</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="同步省略">同步省略</h4>
-<ul>
+<h4 id="同步省略"><a href="#同步省略" class="headerlink" title="同步省略"></a>同步省略</h4><ul>
 <li>线程同步的代价是相当高的，同步的后果是降低并发性和性能</li>
 <li>在动态编译同步块的时候，JIT编译器可以借助逃逸分析来判断同步块所使用的锁对象是否只能够被一个线程访问而没有被发布到其他线程。如果没有，那么JIT编译器在编译这个同步块的时候就会取消对这部分代码的同步。这样就能大大提高并发性和性能。这个取消同步的过程就叫同步省略，也叫==锁消除==</li>
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 同步省略说明</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">f</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">Object</span> hollis = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">        <span class="function"><span class="title">synchronized</span>(<span class="params">hollis</span>)</span> &#123;</span><br><span class="line">            System.out.println(hollis);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//代码中对hollis这个对象进行加锁，但是hollis对象的生命周期只在f（）方法中</span></span><br><span class="line">    <span class="comment">//并不会被其他线程所访问控制，所以在JIT编译阶段就会被优化掉。</span></span><br><span class="line">    <span class="comment">//优化为 ↓</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">void</span> <span class="function"><span class="title">f2</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">Object</span> hollis = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">        System.out.println(hollis);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="分离对象或标量替换">分离对象或标量替换</h4>
-<ul>
+<h4 id="分离对象或标量替换"><a href="#分离对象或标量替换" class="headerlink" title="分离对象或标量替换"></a>分离对象或标量替换</h4><ul>
 <li>==标量Scalar==是指一个无法在分解成更小的数据的数据。Java中的原始数据类型就是标量</li>
 <li>相对的，那些还可以分解的数据叫做==聚合量(Aggregate)==，Java中对象就是聚合量，因为它可以分解成其他聚合量和标量</li>
 <li>在JIT阶段，如果经过逃逸分析，发现一个对象不会被外界访问的话，那么经过JIT优化，就会把这个对象拆解成若干个其中包含的若干个成员变量来替代。这个过程就是标量替换</li>
@@ -1055,11 +923,10 @@
 <p>以上代码，经过标量替换后，就会变成</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">alloc</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到，Point这个聚合量经过逃逸分析后，发现他并没有逃逸，就被替换成两个标量了。那么标量替换有什么好处呢？就是可以大大减少堆内存的占用。因为一旦不需要创建对象了，那么就不再需要分配堆内存了。</p>
-<p>标量替换为栈上分配提供了很好的基础。</p>
+<p>   标量替换为栈上分配提供了很好的基础。</p>
 <p><strong>测试代码</strong></p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 标量替换测试</span></span><br><span class="line"><span class="comment"> *  -Xmx100m -Xms100m -XX:+DoEscapeAnalysis -XX:+PrintGC -XX:-EliminateAllocations</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScalarReplace</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> &#123;</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> id;<span class="comment">//标量（无法再分解成更小的数据）</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">String</span> name;<span class="comment">//聚合量（String还可以分解为char数组）</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">alloc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        User u = <span class="keyword">new</span> <span class="built_in">User</span>();<span class="comment">//未发生逃逸</span></span><br><span class="line">        u.id = <span class="number">5</span>;</span><br><span class="line">        u.name = <span class="string">&quot;www.atguigu.com&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">String</span>[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> start = System.<span class="built_in">currentTimeMillis</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000000</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">alloc</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> end = System.<span class="built_in">currentTimeMillis</span>();</span><br><span class="line">        System.out.<span class="built_in">println</span>(<span class="string">&quot;花费的时间为： &quot;</span> + (end - start) + <span class="string">&quot; ms&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="逃逸分析小结">逃逸分析小结</h4>
-<ul>
+<h4 id="逃逸分析小结"><a href="#逃逸分析小结" class="headerlink" title="逃逸分析小结"></a>逃逸分析小结</h4><ul>
 <li>关于逃逸分析的论文在1999年就已经发表了，但直到JDK1.6才有实现，而且这项技术到如今也并不是十分成熟的。</li>
 <li>其根本原因就是无法保证逃逸分析的性能消耗一定能高于他的消耗。虽然经过逃逸分析可以做标量替换、栈上分配、和锁消除。但是逃逸分析自身也是需要进行一系列复杂的分析的，这其实也是一个相对耗时的过程。</li>
 <li>一个极端的例子，就是经过逃逸分析之后，发现没有一个对象是不逃逸的。那这个逃逸分析的过程就白白浪费掉了。</li>
@@ -1219,7 +1086,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java虚拟机_运行时数据区(堆)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%A0%B8%E5%BF%83%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.核心概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-%E9%85%8D%E7%BD%AEjvm%E5%8F%8A%E6%9F%A5%E7%9C%8Bjvm%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.1 配置jvm及查看jvm进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-%E5%88%86%E6%9E%90SimpleHeap%E7%9A%84jvm%E6%83%85%E5%86%B5"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">1.2 分析SimpleHeap的jvm情况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-3-%E5%A0%86%E7%9A%84%E7%BB%86%E5%88%86%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">1.3 堆的细分内存结构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E5%A0%86%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F%E4%B8%8EOOM"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.设置堆内存大小与OOM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-%E6%9F%A5%E7%9C%8B%E5%A0%86%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">2.1 查看堆内存大小</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-%E5%A0%86%E5%A4%A7%E5%B0%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.2 堆大小分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-OOM"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">2.3 OOM</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E4%B8%8E%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3.年轻代与老年代</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E5%9B%BE%E8%A7%A3%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4.图解对象分配过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">4.2 对象分配的特殊情况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-%E4%BB%A3%E7%A0%81%E4%B8%BE%E4%BE%8B"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">4.3 代码举例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-%E5%B8%B8%E7%94%A8%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">4.4 常用调优工具</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Minor-GC%E3%80%81Major-GC%E3%80%81Full-GC"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5.Minor GC、Major GC、Full GC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">代码演示</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-%E5%A0%86%E7%A9%BA%E9%97%B4%E5%88%86%E4%BB%A3%E6%80%9D%E6%83%B3"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">6.堆空间分代思想</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">7.内存分配策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">代码示例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-%E4%B8%BA%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%EF%BC%9ATLAB%EF%BC%88%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%E7%BC%93%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%89"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">8.为对象分配内存：TLAB（线程私有缓存区域）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA-2"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">代码演示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TLAB%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">TLAB对象分配过程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#9-%E5%B0%8F%E7%BB%93%E5%A0%86%E7%A9%BA%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">9.小结堆空间的参数设置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.9.0.1.</span> <span class="toc-nav-text">说明</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#10-%E5%A0%86%E6%98%AF%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%94%AF%E4%B8%80%E9%80%89%E6%8B%A9%E4%B9%88%EF%BC%88%E4%B8%8D%E6%98%AF%EF%BC%89"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">10.堆是分配对象的唯一选择么（不是）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">代码分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.10.1.1.</span> <span class="toc-nav-text">逃逸分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">参数设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-nav-number">1.10.3.</span> <span class="toc-nav-text">代码优化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%88%E4%B8%8A%E5%88%86%E9%85%8D"><span class="toc-nav-number">1.10.3.1.</span> <span class="toc-nav-text">栈上分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E7%9C%81%E7%95%A5"><span class="toc-nav-number">1.10.3.2.</span> <span class="toc-nav-text">同步省略</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%E5%AF%B9%E8%B1%A1%E6%88%96%E6%A0%87%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="toc-nav-number">1.10.3.3.</span> <span class="toc-nav-text">分离对象或标量替换</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">1.10.3.4.</span> <span class="toc-nav-text">逃逸分析小结</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java%E8%99%9A%E6%8B%9F%E6%9C%BA-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA-%E5%A0%86"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java虚拟机_运行时数据区(堆)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%A0%B8%E5%BF%83%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.核心概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-%E9%85%8D%E7%BD%AEjvm%E5%8F%8A%E6%9F%A5%E7%9C%8Bjvm%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.1 配置jvm及查看jvm进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-%E5%88%86%E6%9E%90SimpleHeap%E7%9A%84jvm%E6%83%85%E5%86%B5"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">1.2 分析SimpleHeap的jvm情况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-3-%E5%A0%86%E7%9A%84%E7%BB%86%E5%88%86%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">1.3 堆的细分内存结构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E5%A0%86%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F%E4%B8%8EOOM"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.设置堆内存大小与OOM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-%E6%9F%A5%E7%9C%8B%E5%A0%86%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">2.1 查看堆内存大小</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-%E5%A0%86%E5%A4%A7%E5%B0%8F%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.2 堆大小分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-OOM"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">2.3 OOM</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E4%B8%8E%E8%80%81%E5%B9%B4%E4%BB%A3"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">3.年轻代与老年代</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E5%9B%BE%E8%A7%A3%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">4.图解对象分配过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">4.2 对象分配的特殊情况</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-%E4%BB%A3%E7%A0%81%E4%B8%BE%E4%BE%8B"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">4.3 代码举例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-%E5%B8%B8%E7%94%A8%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">4.4 常用调优工具</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Minor-GC%E3%80%81Major-GC%E3%80%81Full-GC"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">5.Minor GC、Major GC、Full GC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">代码演示</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-%E5%A0%86%E7%A9%BA%E9%97%B4%E5%88%86%E4%BB%A3%E6%80%9D%E6%83%B3"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">6.堆空间分代思想</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">7.内存分配策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">代码示例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-%E4%B8%BA%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%EF%BC%9ATLAB%EF%BC%88%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%E7%BC%93%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%89"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">8.为对象分配内存：TLAB（线程私有缓存区域）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%BC%94%E7%A4%BA-1"><span class="toc-nav-number">1.8.1.</span> <span class="toc-nav-text">代码演示</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TLAB%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.8.2.</span> <span class="toc-nav-text">TLAB对象分配过程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#9-%E5%B0%8F%E7%BB%93%E5%A0%86%E7%A9%BA%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">9.小结堆空间的参数设置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.9.0.1.</span> <span class="toc-nav-text">说明</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#10-%E5%A0%86%E6%98%AF%E5%88%86%E9%85%8D%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%94%AF%E4%B8%80%E9%80%89%E6%8B%A9%E4%B9%88%EF%BC%88%E4%B8%8D%E6%98%AF%EF%BC%89"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">10.堆是分配对象的唯一选择么（不是）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">代码分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.10.1.1.</span> <span class="toc-nav-text">逃逸分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">参数设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96"><span class="toc-nav-number">1.10.3.</span> <span class="toc-nav-text">代码优化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%88%E4%B8%8A%E5%88%86%E9%85%8D"><span class="toc-nav-number">1.10.3.1.</span> <span class="toc-nav-text">栈上分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E7%9C%81%E7%95%A5"><span class="toc-nav-number">1.10.3.2.</span> <span class="toc-nav-text">同步省略</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E7%A6%BB%E5%AF%B9%E8%B1%A1%E6%88%96%E6%A0%87%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="toc-nav-number">1.10.3.3.</span> <span class="toc-nav-text">分离对象或标量替换</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">1.10.3.4.</span> <span class="toc-nav-text">逃逸分析小结</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

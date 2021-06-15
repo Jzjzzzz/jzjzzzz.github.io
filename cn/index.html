@@ -244,6 +244,8 @@
 
           
           
+          
+          
           <li>
             <a href="/about/">
               
@@ -255,12 +257,10 @@
           
           
           
-          
-          
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -460,15 +460,10 @@
       Java虚拟机执行引擎原理
     </h3>
     <div class="post-content-preview">
-      执行引擎（Execution Engine）
-执行引擎概述
-
-
+      执行引擎（Execution Engine）执行引擎概述
 执行引擎是Java虚拟机的核心组成部分之一
-
-
 虚拟机是一个相对于“物理机”的概念，这两种机器都有代码执行能力，其区别是物理机的执行引擎是直接建立在处理器、缓存、指令集和操作系统层面上的，而虚拟机的执行引擎则是由软件自行实现的，因此可以不受物理条件制约地定制指令集与执行引擎的结构体系，能够执行那些不被硬件直接支持的指令集格式。
-......
+JVM的主......
     </div>
   </a>
   
@@ -501,14 +496,9 @@
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区(对象的实例化内存布局与访问定位+直接内存)
-1.对象的实例化
-
+      Java虚拟机_运行时数据区(对象的实例化内存布局与访问定位+直接内存)1.对象的实例化
 1.1 创建对象的方式
-
-
 new
-
 
 
 最常见的方式
@@ -516,11 +506,9 @@ new
 变形2 ： XxBuilder/XxoxFactory的静态方法
 
 
-
 Class的newInstance（）：反射的方式，只能调用空参的构造器，权限必须是public
 
-
-Constructor的newInsta......
+Constructor的newInstance（Xxx......
     </div>
   </a>
   
@@ -553,15 +541,12 @@ Constructor的newInsta......
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区（方法区）
-1. 堆、栈、方法区的交互关系
-运行时数据区结构图
+      Java虚拟机_运行时数据区（方法区）1. 堆、栈、方法区的交互关系运行时数据区结构图
 
 堆、栈、方法区的交互关系
 
-2. 方法区的理解
-《Java虚拟机规范》中明确说明：‘尽管所有的方法区在逻辑上属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。’但对于HotSpotJVM而言，方法区还有一个别名叫做Non-heap（非堆），目的就是要和堆分开。
-所以，==方法区......
+2. 方法区的理解《Java虚拟机规范》中明确说明：‘尽管所有的方法区在逻辑上属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。’但对于HotSpotJVM而言，方法区还有一个别名叫做Non-heap（非堆），目的就是要和堆分开。
+  所以，==方法区可......
     </div>
   </a>
   
@@ -594,13 +579,11 @@ Constructor的newInsta......
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区(堆)
-1.核心概述
-一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。
+      Java虚拟机_运行时数据区(堆)1.核心概述一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。
 
 一个jvm实例只存在一个堆内存，堆也是java内存管理的核心区域
 Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间（堆内存的大小是可以调节的）
-《Java虚拟机......
+《Java虚拟机规范......
     </div>
   </a>
   
@@ -633,10 +616,8 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       本地方法接口
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_本地方法接口
-本地方法
-简单来讲，一个Native Method就是一个java滴啊用非java代码的接口，一个Native Method 是这样一个java方法：该方法的实现由非Java语言实现，比如C。这个特征并非java特有，很多其他的编程语言都有这一机制，比如在C++ 中，你可以用extern “C” 告知C++ 编译器去调用一个C的函数。
-在定义一个native m......
+      Java虚拟机_本地方法接口本地方法简单来讲，一个Native Method就是一个java滴啊用非java代码的接口，一个Native Method 是这样一个java方法：该方法的实现由非Java语言实现，比如C。这个特征并非java特有，很多其他的编程语言都有这一机制，比如在C++ 中，你可以用extern “C” 告知C++ 编译器去调用一个C的函数。
+在定义一个native met......
     </div>
   </a>
   
@@ -669,12 +650,9 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区
-内存与线程
-01 内存
-内存是非常重要的系统资源，是硬盘和cpu的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM内存布局规定了JAVA在运行过程中内存申请、分配、管理的策略，保证了JVM的高效稳定运行。不同的jvm对于内存的划分方式和管理机制存在着部分差异（对于Hotspot主要指方法区）
+      Java虚拟机_运行时数据区内存与线程01 内存内存是非常重要的系统资源，是硬盘和cpu的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM内存布局规定了JAVA在运行过程中内存申请、分配、管理的策略，保证了JVM的高效稳定运行。不同的jvm对于内存的划分方式和管理机制存在着部分差异（对于Hotspot主要指方法区）
 
-（图源阿里）JDK8的元数据区+JIT编译产物 就是JDK......
+（图源阿里）JDK8的元数据区+JIT编译产物 就是JDK8以前......
     </div>
   </a>
   
@@ -707,14 +685,11 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       类加载子系统原理
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_类加载子系统
-JVM架构图
-
+      Java虚拟机_类加载子系统JVM架构图
 1.类加载子系统作用
-
 类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识；
 ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定
-加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区还会存放运行时常量池信息，可能还包括字符串字面......
+加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区还会存放运行时常量池信息，可能还包括字符串字面量和数......
     </div>
   </a>
   
@@ -747,17 +722,14 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
       JVM虚拟机的初步体验
     </h3>
     <div class="post-content-preview">
-      初识Java虚拟机
-JVM的位置
-一些JVM
-
+      初识Java虚拟机JVM的位置一些JVM
 SUN Classic
 Exact VM
 HotSpot VM ：HotSpot指热点代码探测技术
 BEA JRockit：(BEA 已被Oracle收购) 专注于服务端应用，世界最快的jvm之一
 IBM J9
 Taobao JVM: 目前已经在淘宝、天猫上线，替换了Oracle官方JVM；
-Graal VM: Oracle 2018年4月公开......
+Graal VM: Oracle 2018年4月公开，口号......
     </div>
   </a>
   
@@ -790,18 +762,12 @@ Graal VM: Oracle 2018年4月公开......
       SpringBoot整合短信服务调用Api
     </h3>
     <div class="post-content-preview">
-      腾讯云短信服务
-1.在腾讯云短信服务上新建短信签名
-https://console.cloud.tencent.com/smsv2/guide
-
+      腾讯云短信服务1.在腾讯云短信服务上新建短信签名https://console.cloud.tencent.com/smsv2/guide
 2.新建短信模板
+3.获取腾讯云的API秘钥https://console.cloud.tencent.com/cam/capi
+4.开发指南https://cloud.tencent.com/document/product/382/38778
 
-3.获取腾讯云的API秘钥
-https://console.cloud.tencent.com/cam/capi
-
-
-4.开发指南
-https://cloud.tencent.com/document/product/382/3......
+5.......
     </div>
   </a>
   
@@ -834,19 +800,11 @@ https://cloud.tencent.com/document/product/382/3......
       阿里巴巴EasyExcel介绍和小demo的操作
     </h3>
     <div class="post-content-preview">
-      阿里巴巴EasyExcel使用
-一、Excel导入导出的应用场景
-1、数据导入
-减轻录入工作量
-2、数据导出
-统计信息归档
-3、数据传输
-异构系统之间数据传输
-二、EasyExcel简介
-常见excel分析框架：POI、EasyExcel
-1、官方网站
-https://github.com/alibaba/easyexcel
-快速开始：https://www.yuque.com/easyex......
+      阿里巴巴EasyExcel使用一、Excel导入导出的应用场景1、数据导入减轻录入工作量
+2、数据导出统计信息归档
+3、数据传输异构系统之间数据传输
+二、EasyExcel简介常见excel分析框架：POI、EasyExcel
+1、官方网站https://github.com/alibaba/easyexcel快速开始：https://www.yuque.com/easyexcel/doc/......
     </div>
   </a>
   
