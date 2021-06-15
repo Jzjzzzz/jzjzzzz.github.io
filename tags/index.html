@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -269,9 +269,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/tags/">
               
-              关于
+              标签
               
               
             </a>
@@ -280,9 +280,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -435,9 +435,9 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#JavaWeb" title="JavaWeb" rel="1">JavaWeb</a>
+        <a href="#JVM" title="JVM" rel="9">JVM</a>
         
-        <a href="#JVM" title="JVM" rel="8">JVM</a>
+        <a href="#JavaWeb" title="JavaWeb" rel="1">JavaWeb</a>
         
         <a href="#OSS" title="OSS" rel="2">OSS</a>
         
@@ -452,50 +452,9 @@
       <!-- 标签列表 -->
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="JavaWeb">
-          <span class="tag-text">JavaWeb</span>
-        </span>
-        
-        <div class="post-preview">
-          <a href="/cn/JavaWeb_Tomcat/">
-            <h2 class="post-title">
-              JavaWeb_Tomcat
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              Tomcat的使用
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="JVM">
           <span class="tag-text">JVM</span>
         </span>
-        
-        <div class="post-preview">
-          <a href="/cn/Java虚拟机_类加载子系统/">
-            <h2 class="post-title">
-              Java虚拟机_类加载子系统
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              类加载子系统原理
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
         
         <div class="post-preview">
           <a href="/cn/Java虚拟机_本地方法接口/">
@@ -508,6 +467,23 @@
             
             <h3 class="post-subtitle">
               本地方法接口
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
+          <a href="/cn/Java虚拟机_类加载子系统/">
+            <h2 class="post-title">
+              Java虚拟机_类加载子系统
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              类加载子系统原理
             </h3>
             
           </a>
@@ -566,6 +542,23 @@
         <hr>
         
         <div class="post-preview">
+          <a href="/cn/Java虚拟机_字符串常量池StringTable/">
+            <h2 class="post-title">
+              Java虚拟机_字符串常量池StringTable
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              本地方法接口
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
           <a href="/cn/Java虚拟机_运行时数据区(方法区)/">
             <h2 class="post-title">
               Java虚拟机_运行时数据区（方法区）
@@ -610,6 +603,30 @@
             
             <h3 class="post-subtitle">
               程序计数器+虚拟机栈+本地方法栈
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="JavaWeb">
+          <span class="tag-text">JavaWeb</span>
+        </span>
+        
+        <div class="post-preview">
+          <a href="/cn/JavaWeb_Tomcat/">
+            <h2 class="post-title">
+              JavaWeb_Tomcat
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              Tomcat的使用
             </h3>
             
           </a>
@@ -1208,5 +1225,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
