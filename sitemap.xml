@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>http://yoursite-url/404.html</loc>
+    
+    <lastmod>2021-06-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite-url/cn/Java%E8%99%9A%E6%8B%9F%E6%9C%BA_%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA(%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D+%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98)/</loc>
     
     <lastmod>2021-06-15</lastmod>
@@ -108,13 +115,6 @@
   
   <url>
     <loc>http://yoursite-url/cn/SpringSecurity%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/</loc>
-    
-    <lastmod>2021-06-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/404.html</loc>
     
     <lastmod>2021-06-13</lastmod>
     
