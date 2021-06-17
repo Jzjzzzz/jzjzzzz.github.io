@@ -247,9 +247,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -452,6 +452,45 @@
   <!-- top end -->
   
 
+  <a href="/cn/中国近代史/">
+    <h2 class="post-title">
+      中国近代史
+    </h2>
+    <h3 class="post-subtitle">
+      历史知识点
+    </h3>
+    <div class="post-content-preview">
+      中国近代史1.中国近代史的历史分析2.近代中国社会的性质近代中国的社会性质是 半殖民地半封建社会 。1840年鸦片战争爆发，签订了《南京条约》，《南京条约》的签订标志着中国由封建社会进入半殖民地半封建社会。
+4.近代中国社会的主要矛盾
+帝国主义与中华民族之间的矛盾
+封建主义和人民大众的矛盾
+
+5.近代中国的两大历史任务一是求得民族独立和人民解放；二是实现国家的繁荣富强和人民的共同富裕。
+6.......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Jzj on
+    2021-06-17
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#JVM" title="JVM">JVM</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/Java虚拟机_字符串常量池StringTable/">
     <h2 class="post-title">
       Java虚拟机_字符串常量池StringTable
@@ -460,17 +499,14 @@
       本地方法接口
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_字符串常量池StringTable
-1.String的基本特性
-
-String：字符串，使用一对&quot;&quot;引起来表示。
-
+      Java虚拟机_字符串常量池StringTable1.String的基本特性
+String：字符串，使用一对””引起来表示。
 String sl = “hello”；//字面量的定义方式
-String s2 = new String（“hello”） ；
+String s2 = new String（”hello”） ；
 
 
 String声明为final的， 不可被继承
-String实现了Serializable接口：表示字符串是支......
+String实现了Serializable接口：表示字符串是支持序列化的。 实现了Com......
     </div>
   </a>
   
@@ -503,15 +539,10 @@ String实现了Serializable接口：表示字符串是支......
       Java虚拟机执行引擎原理
     </h3>
     <div class="post-content-preview">
-      执行引擎（Execution Engine）
-执行引擎概述
-
-
+      执行引擎（Execution Engine）执行引擎概述
 执行引擎是Java虚拟机的核心组成部分之一
-
-
 虚拟机是一个相对于“物理机”的概念，这两种机器都有代码执行能力，其区别是物理机的执行引擎是直接建立在处理器、缓存、指令集和操作系统层面上的，而虚拟机的执行引擎则是由软件自行实现的，因此可以不受物理条件制约地定制指令集与执行引擎的结构体系，能够执行那些不被硬件直接支持的指令集格式。
-......
+JVM的主......
     </div>
   </a>
   
@@ -544,14 +575,9 @@ String实现了Serializable接口：表示字符串是支......
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区(对象的实例化内存布局与访问定位+直接内存)
-1.对象的实例化
-
+      Java虚拟机_运行时数据区(对象的实例化内存布局与访问定位+直接内存)1.对象的实例化
 1.1 创建对象的方式
-
-
 new
-
 
 
 最常见的方式
@@ -559,11 +585,9 @@ new
 变形2 ： XxBuilder/XxoxFactory的静态方法
 
 
-
 Class的newInstance（）：反射的方式，只能调用空参的构造器，权限必须是public
 
-
-Constructor的newInsta......
+Constructor的newInstance（Xxx......
     </div>
   </a>
   
@@ -596,15 +620,12 @@ Constructor的newInsta......
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区（方法区）
-1. 堆、栈、方法区的交互关系
-运行时数据区结构图
+      Java虚拟机_运行时数据区（方法区）1. 堆、栈、方法区的交互关系运行时数据区结构图
 
 堆、栈、方法区的交互关系
 
-2. 方法区的理解
-《Java虚拟机规范》中明确说明：‘尽管所有的方法区在逻辑上属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。’但对于HotSpotJVM而言，方法区还有一个别名叫做Non-heap（非堆），目的就是要和堆分开。
-所以，==方法区......
+2. 方法区的理解《Java虚拟机规范》中明确说明：‘尽管所有的方法区在逻辑上属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。’但对于HotSpotJVM而言，方法区还有一个别名叫做Non-heap（非堆），目的就是要和堆分开。
+  所以，==方法区可......
     </div>
   </a>
   
@@ -637,18 +658,11 @@ Constructor的newInsta......
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区(堆)
-1.核心概述
-一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。
-
+      Java虚拟机_运行时数据区(堆)1.核心概述一个进程对应一个jvm实例，一个运行时数据区，又包含多个线程，这些线程共享了方法区和堆，每个线程包含了程序计数器、本地方法栈和虚拟机栈。
 
 一个jvm实例只存在一个堆内存，堆也是java内存管理的核心区域
-
-
 Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的最大一块内存空间（堆内存的大小是可以调节的）
-
-
-《Ja......
+《Java虚拟机规范......
     </div>
   </a>
   
@@ -681,10 +695,8 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       本地方法接口
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_本地方法接口
-本地方法
-简单来讲，一个Native Method就是一个java			用非java代码的接口，一个Native Method 是这样一个java方法：该方法的实现由非Java语言实现，比如C。这个特征并非java特有，很多其他的编程语言都有这一机制，比如在C++ 中，你可以用extern “C” 告知C++ 编译器去调用一个C的函数。
-在定义一个native ......
+      Java虚拟机_本地方法接口本地方法简单来讲，一个Native Method就是一个java            用非java代码的接口，一个Native Method 是这样一个java方法：该方法的实现由非Java语言实现，比如C。这个特征并非java特有，很多其他的编程语言都有这一机制，比如在C++ 中，你可以用extern “C” 告知C++ 编译器去调用一个C的函数。
+在定义一个......
     </div>
   </a>
   
@@ -717,12 +729,9 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       程序计数器+虚拟机栈+本地方法栈
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_运行时数据区
-内存与线程
-01 内存
-内存是非常重要的系统资源，是硬盘和cpu的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM内存布局规定了JAVA在运行过程中内存申请、分配、管理的策略，保证了JVM的高效稳定运行。不同的jvm对于内存的划分方式和管理机制存在着部分差异（对于Hotspot主要指方法区）
+      Java虚拟机_运行时数据区内存与线程01 内存内存是非常重要的系统资源，是硬盘和cpu的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM内存布局规定了JAVA在运行过程中内存申请、分配、管理的策略，保证了JVM的高效稳定运行。不同的jvm对于内存的划分方式和管理机制存在着部分差异（对于Hotspot主要指方法区）
 
-（图源阿里）JDK8的元数据区+JIT编译产物 就是JDK......
+（图源阿里）JDK8的元数据区+JIT编译产物 就是JDK8以前......
     </div>
   </a>
   
@@ -755,20 +764,14 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
       类加载子系统原理
     </h3>
     <div class="post-content-preview">
-      Java虚拟机_类加载子系统
-JVM架构图
-
+      Java虚拟机_类加载子系统JVM架构图
 1.类加载子系统作用
-
-
 类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识（cofe babe）；
-
 
 
 ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine（执行引擎）决定
 
-
-加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区......
+加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区还会存放运行......
     </div>
   </a>
   
@@ -801,17 +804,14 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
       JVM虚拟机的初步体验
     </h3>
     <div class="post-content-preview">
-      初识Java虚拟机
-JVM的位置
-一些JVM
-
+      初识Java虚拟机JVM的位置一些JVM
 SUN Classic
 Exact VM
 HotSpot VM ：HotSpot指热点代码探测技术
 BEA JRockit：(BEA 已被Oracle收购) 专注于服务端应用，世界最快的jvm之一
 IBM J9
 Taobao JVM: 目前已经在淘宝、天猫上线，替换了Oracle官方JVM；
-Graal VM: Oracle 2018年4月公开......
+Graal VM: Oracle 2018年4月公开，口号......
     </div>
   </a>
   
@@ -822,50 +822,6 @@ Graal VM: Oracle 2018年4月公开......
   <div class="tags">
     
     <a href="/tags/#JVM" title="JVM">JVM</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/腾讯云短信服务接口实现/">
-    <h2 class="post-title">
-      腾讯云短信服务接口实现
-    </h2>
-    <h3 class="post-subtitle">
-      SpringBoot整合短信服务调用Api
-    </h3>
-    <div class="post-content-preview">
-      腾讯云短信服务
-1.在腾讯云短信服务上新建短信签名
-https://console.cloud.tencent.com/smsv2/guide
-
-2.新建短信模板
-
-3.获取腾讯云的API秘钥
-https://console.cloud.tencent.com/cam/capi
-
-
-4.开发指南
-https://cloud.tencent.com/document/product/382/3......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Jzj on
-    2021-06-14
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#短信服务" title="短信服务">短信服务</a>
     
   </div>
   
@@ -925,7 +881,7 @@ https://cloud.tencent.com/document/product/382/3......
     
     
     
-    <a href="/tags/#JVM" title="JVM" rel="9">JVM</a>
+    <a href="/tags/#JVM" title="JVM" rel="10">JVM</a>
     
     
     
@@ -1004,6 +960,10 @@ https://cloud.tencent.com/document/product/382/3......
 <div class="widget">
   <ul>
     
+    <a href="%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2/">
+      <li>中国近代史</li>
+    </a>
+    
     <a href="Java%E8%99%9A%E6%8B%9F%E6%9C%BA_%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0StringTable/">
       <li>Java虚拟机_字符串常量池StringTable</li>
     </a>
@@ -1018,10 +978,6 @@ https://cloud.tencent.com/document/product/382/3......
     
     <a href="Java%E8%99%9A%E6%8B%9F%E6%9C%BA_%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA(%E6%96%B9%E6%B3%95%E5%8C%BA)/">
       <li>Java虚拟机_运行时数据区（方法区）</li>
-    </a>
-    
-    <a href="Java%E8%99%9A%E6%8B%9F%E6%9C%BA_%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA(%E5%A0%86)/">
-      <li>Java虚拟机_运行时数据区（堆）</li>
     </a>
     
   </ul>
@@ -1044,7 +1000,7 @@ https://cloud.tencent.com/document/product/382/3......
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/06/">June 2021</a><span class="archive-list-count">15</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/06/">June 2021</a><span class="archive-list-count">16</span></li></ul>
 </div>
 
 
@@ -1058,6 +1014,10 @@ https://cloud.tencent.com/document/product/382/3......
     
     <a href="/categories/#编程">
       <li>编程</li>
+    </a>
+    
+    <a href="/categories/#历史">
+      <li>历史</li>
     </a>
     
   </ul>
