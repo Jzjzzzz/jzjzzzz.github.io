@@ -247,6 +247,17 @@
           
           
           <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
             <a href="/about/">
               
               关于
@@ -261,17 +272,6 @@
             <a href="/archive/">
               
               归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/categories/">
-              
-              分类
               
               
             </a>
@@ -468,7 +468,7 @@
 
         <h1>算法设计与分析-排序</h1>
 <h2 id="一-插入排序">一.插入排序</h2>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5C%E7%AE%97%E6%B3%95%E5%9B%BE%5C1.gif" alt=""></p>
+<p><img src="1.gif" alt=""></p>
 <h4 id="插入排序思想">插入排序思想</h4>
 <p>基本思想是在一个<code>有序的序列</code>中找到待排序元素的位置，比如将<code>3</code>插入<code>-1，2，4，6</code>这个有序序列中，先与6和4比较，直到和2比较之后，找到适合插入的位置(2之后)。<br>
 下面以按升序排序为例：</p>
@@ -486,7 +486,7 @@
 空间复杂度：<img src="https://math.jianshu.com/math?formula=O(1)" alt="O(1)"><br>
 稳定性：稳定</p>
 <h2 id="二-冒泡排序">二.冒泡排序</h2>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5C%E7%AE%97%E6%B3%95%E5%9B%BE%5C2.gif" alt=""></p>
+<p><img src="2.gif" alt=""></p>
 <h4 id="冒泡排序思想">冒泡排序思想</h4>
 <ul>
 <li>基本思想: 冒泡排序，类似于水中冒泡，较大的数沉下去，较小的数慢慢冒起来，假设从小到大，即为较大的数慢慢往后排，较小的数慢慢往前排。</li>
@@ -509,7 +509,7 @@
 稳定性：稳定</p>
 </blockquote>
 <h2 id="三-选择排序">三.选择排序</h2>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5C%E7%AE%97%E6%B3%95%E5%9B%BE%5C3.gif" alt=""></p>
+<p><img src="3.gif" alt=""></p>
 <h4 id="选择排序思路">选择排序思路</h4>
 <p>每一次遍历待排序的序列，记录最小（大）值的下标，和待排序第一个元素进行比较，如果小（大）与待排序第一个元素，交换</p>
 <h4 id="实现-java">实现(java)</h4>
@@ -1232,20 +1232,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
