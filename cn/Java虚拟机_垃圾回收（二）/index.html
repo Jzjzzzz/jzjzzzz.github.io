@@ -513,7 +513,7 @@
 <li>尽管内存泄漏并不会立刻引起程序崩溃，但是一旦发生内存泄漏，程序中的可用内存就会被逐步蚕食，直至耗尽所有内存，最终出现0utOfMemory异常，导致程序崩溃。</li>
 <li>注意，这里的存储空间并不是指物理内存，而是指虚拟内存大小，这个虚拟内存大小取决于磁盘交换区设定的大小。</li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C1.png" alt=""></p>
+<p><img src="1.png" alt=""></p>
 <p><strong>举例</strong></p>
 <ul>
 <li>1、单例模式<br>
@@ -546,14 +546,14 @@
 <li>在操作系统中，是指一个时间段中有几个程序都处于己启动运行到运行完毕之间，且这几个程序都是在同一个处理器_上运行。</li>
 <li>并发不是真正意义上的“同时进行”，只是CPU把一个时间段划分成几个时间片段（时间区间），然后在这几个时间区间之间来回切换，由于CPU处理的速度非常快，只要时间间隔处理得当，即可让用户感觉是多个应用程序同时在进行。</li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C2.png" alt=""></p>
+<p><img src="2.png" alt=""></p>
 <h4 id="并行-Parallel">并行(Parallel)</h4>
 <ul>
 <li>当系统有一个以上CPU时，当一个CPU执行一个进程时，另一个CPU可以执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，我们称之为并行（Parallel）。</li>
 <li>其实==决定并行的因素不是CPU的数量，而是CPU的核心数量==，比如一个CPU多个核也可以 并行。</li>
 <li>适合科学计算，后台处理等弱交互场景</li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C3.png" alt=""></p>
+<p><img src="3.png" alt=""></p>
 <h4 id="二者对比">二者对比</h4>
 <ul>
 <li>并发，指的是多个事情，在同一时间段内同时发生了。</li>
@@ -577,13 +577,13 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C4.png" alt=""></p>
+<p><img src="4.png" alt=""></p>
 <p>并发（Concurrent） ：指用户线程与垃圾收集线程同时执行（但不一定是并行的，可能会交替执行），垃圾回收线程在执行时不会停顿用户程序的运行。</p>
 <ul>
 <li>➢用户程序在继续运行，而垃圾收集程序线程运行于另一个CPU上；</li>
 <li>➢如： CMS、G1</li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C5.png" alt=""></p>
+<p><img src="5.png" alt=""></p>
 <h3 id="安全点与安全区域">安全点与安全区域</h3>
 <h4 id="安全点-Safepoint">安全点(Safepoint)</h4>
 <ul>
@@ -609,7 +609,7 @@
 <li>在JDK 1.2版之后，Java对引用的概念进行了扩充，将引用分为强引用（Strong Reference）、软引用（Soft Reference） 、弱引用（Weak Reference） 和虚引用（Phantom Reference） 4种，这4种引用强度依次逐渐减弱。</li>
 <li>除强引用外，其他3种引用均可以在java.lang.ref包中找到它们的身影。如下图，显示了这3种引用类型对应的类，开发人员可以在应用程序中直接使用它们。</li>
 </ul>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C6.png" alt=""></p>
+<p><img src="6.png" alt=""></p>
 <p>Reference子类中只有终结器引用是包内可见的，其他3种引用类型均为public，可以在应用程序中直接使用</p>
 <ul>
 <li>强引用（StrongReference）I ：最传统的“引用”的定义，是指在程序代码之中普遍存在的引用赋值，即类似“0bject obj=new object（ ）”这种引用关系。==无论任何情况下，只要强引用关系还存在，垃圾收集器就永远不会回收掉被引用的对象==。</li>
@@ -630,11 +630,11 @@
 <p><code>StringBuffer str = new StringBuffer (&quot;Hello,尚硅谷&quot;);</code><br>
 局部变量str指向StringBuffer实例所在堆空间，通过str可以操作该实例，那么str就是StringBuffer实例的强引用<br>
 对应内存结构：</p>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C7.png" alt=""></p>
+<p><img src="7.png" alt=""></p>
 <p>此时,如果再运行一个赋值语句:<br>
 <code>StringBuffer str1 = str;</code><br>
 对应内存结构:</p>
-<p><img src="C:%5CUsers%5CJzj%5CDesktop%5Ctu%5C8.png" alt=""></p>
+<p><img src="8.png" alt=""></p>
 <p>本例中的两个引用，都是强引用，强引用具备以下特点：</p>
 <ul>
 <li>强引用可以直接访问目标对象。</li>
