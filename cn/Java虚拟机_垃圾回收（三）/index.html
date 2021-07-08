@@ -142,7 +142,7 @@
   <link rel="canonical" href="http://yoursite-url/cn/Java虚拟机_垃圾回收（三）/">
   <title>
     
-      Learn to Cherish
+      Java虚拟机_垃圾回收（三） - Learn to Cherish
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -247,6 +247,17 @@
           
           
           <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
             <a href="/about/">
               
               关于
@@ -272,17 +283,6 @@
             <a href="/tags/">
               
               标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/categories/">
-              
-              分类
               
               
             </a>
@@ -348,19 +348,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: url('//img/header_img/lml_bg.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/lml_bg.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/lml_bg.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url(''); */
+        /* background-image: url('/img/header_img/lml_bg.jpg'); */
       
     }
 
@@ -385,12 +385,14 @@
           <div class="post-heading">
             <div class="tags">
               
+              <a class="tag" href="/tags/#JVM" title="JVM">JVM</a>
+              
             </div>
-            <h1></h1>
-            <h2 class="subheading"></h2>
+            <h1>Java虚拟机_垃圾回收（三）</h1>
+            <h2 class="subheading">垃圾回收器</h2>
             <span class="meta">
               Posted by Jzj on
-              2021-07-08
+              2021-07-07
             </span>
 
 
@@ -1244,7 +1246,7 @@ jdk8 使用的是parallel</p>
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/Java虚拟机_垃圾回收（三）/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=Java虚拟机_垃圾回收（三）&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/Java虚拟机_垃圾回收（三）/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -1279,7 +1281,7 @@ jdk8 使用的是parallel</p>
       repo: '',
       owner: '',
       admin: '',
-      id: 'Thu Jul 08 2021 10:24:32 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Jul 07 2021 13:15:26 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -1327,6 +1329,17 @@ jdk8 使用的是parallel</p>
       <!-- Catalog: Tabe of Content -->
       <!-- Table of Contents -->
 
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Java虚拟机_垃圾回收器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#GC%E7%9A%84%E5%88%86%E7%B1%BB%E4%B8%8E%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">GC的分类与性能指标</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%84%E4%BC%B0GC%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">评估GC的性能指标</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="toc-nav-number">1.1.1.1.</span> <span class="toc-nav-text">吞吐量</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9A%82%E5%81%9C%E6%97%B6%E9%97%B4"><span class="toc-nav-number">1.1.1.2.</span> <span class="toc-nav-text">暂停时间</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">不同的垃圾回收器概述</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">垃圾收集器发展史</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7%E6%AC%BE%E7%BB%8F%E5%85%B8%E7%9A%84%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">7款经典的垃圾收集器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7%E6%AC%BE%E7%BB%8F%E5%85%B8%E7%9A%84%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%88%86%E4%BB%A3%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">7款经典的垃圾收集器与垃圾分代之间的关系</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E7%BB%84%E5%90%88%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">垃圾收集器的组合关系</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Serial%E5%9B%9E%E6%94%B6%E5%99%A8-%E4%B8%B2%E8%A1%8C%E5%9B%9E%E6%94%B6"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">Serial回收器:串行回收</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">优势</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">总结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ParNew%E5%9B%9E%E6%94%B6%E5%99%A8-%E5%B9%B6%E8%A1%8C%E5%9B%9E%E6%94%B6"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">ParNew回收器:并行回收</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Parallel%E5%9B%9E%E6%94%B6%E5%99%A8-%E5%90%9E%E5%90%90%E9%87%8F%E4%BC%98%E5%85%88"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">Parallel回收器:吞吐量优先</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">参数配置</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CMS%E5%9B%9E%E6%94%B6%E5%99%A8-%E4%BD%8E%E5%BB%B6%E8%BF%9F"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">CMS回收器:低延迟</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CMS%E7%9A%84%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">CMS的优点：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CMS%E7%9A%84%E5%BC%8A%E7%AB%AF%EF%BC%9A"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">CMS的弊端：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">参数设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A"><span class="toc-nav-number">1.6.4.</span> <span class="toc-nav-text">小结：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JDK-%E5%90%8E%E7%BB%AD%E7%89%88%E6%9C%AC%E4%B8%ADCMS%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-nav-number">1.6.5.</span> <span class="toc-nav-text">JDK 后续版本中CMS的变化</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#G1%E5%9B%9E%E6%94%B6%E5%99%A8-%E5%8C%BA%E5%9F%9F%E5%8C%96%E5%88%86%E4%BB%A3%E5%BC%8F"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">G1回收器:区域化分代式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%98%E5%8A%BF-2"><span class="toc-nav-number">1.7.1.</span> <span class="toc-nav-text">优势</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">1.7.2.</span> <span class="toc-nav-text">缺点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE-2"><span class="toc-nav-number">1.7.3.</span> <span class="toc-nav-text">参数设置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#G1%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-nav-number">1.7.4.</span> <span class="toc-nav-text">G1回收器的常见操作步骤</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">1.7.5.</span> <span class="toc-nav-text">适用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E5%8C%BAregion-%E5%8C%96%E6%95%B4%E4%B8%BA%E9%9B%B6"><span class="toc-nav-number">1.7.6.</span> <span class="toc-nav-text">分区region,化整为零</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#G1%E5%9B%9E%E6%94%B6%E5%99%A8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.7.7.</span> <span class="toc-nav-text">G1回收器垃圾回收过程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%B0%E5%BF%86%E9%9B%86%E4%B8%8E%E5%86%99%E5%B1%8F%E9%9A%9C"><span class="toc-nav-number">1.7.8.</span> <span class="toc-nav-text">记忆集与写屏障</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#G1%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3"><span class="toc-nav-number">1.7.9.</span> <span class="toc-nav-text">G1回收过程详解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-%E5%B9%B4%E8%BD%BB%E4%BB%A3GC"><span class="toc-nav-number">1.7.9.1.</span> <span class="toc-nav-text">1. 年轻代GC</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-%E5%B9%B6%E5%8F%91%E6%A0%87%E8%AE%B0%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">1.7.9.2.</span> <span class="toc-nav-text">2. 并发标记过程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-%E6%B7%B7%E5%90%88%E5%9B%9E%E6%94%B6"><span class="toc-nav-number">1.7.9.3.</span> <span class="toc-nav-text">3. 混合回收</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-Full-GC"><span class="toc-nav-number">1.7.9.4.</span> <span class="toc-nav-text">4. Full GC</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-nav-number">1.7.9.5.</span> <span class="toc-nav-text">补充</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-nav-number">1.7.10.</span> <span class="toc-nav-text">优化建议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">垃圾回收器总结</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#GC%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">GC日志分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PrintGC"><span class="toc-nav-number">1.9.1.</span> <span class="toc-nav-text">+PrintGC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PrintGCDetails"><span class="toc-nav-number">1.9.2.</span> <span class="toc-nav-text">PrintGCDetails</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PrintGCTimeStamps"><span class="toc-nav-number">1.9.3.</span> <span class="toc-nav-text">PrintGCTimeStamps</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="toc-nav-number">1.9.4.</span> <span class="toc-nav-text">补充说明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BE%8B"><span class="toc-nav-number">1.9.5.</span> <span class="toc-nav-text">例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">1.9.6.</span> <span class="toc-nav-text">日志分析工具使用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8%E7%9A%84%E6%96%B0%E5%8F%91%E5%B1%95"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">垃圾回收器的新发展</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JDK11-%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-nav-number">1.10.1.</span> <span class="toc-nav-text">JDK11 新特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Open-JDK12%E7%9A%84Shenandoah-GC"><span class="toc-nav-number">1.10.2.</span> <span class="toc-nav-text">Open JDK12的Shenandoah GC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9D%A9%E5%91%BD%E6%80%A7%E7%9A%84ZGC"><span class="toc-nav-number">1.10.3.</span> <span class="toc-nav-text">革命性的ZGC</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JDK14%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-nav-number">1.10.4.</span> <span class="toc-nav-text">JDK14新特性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%B6%E4%BB%96%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8-AliGC"><span class="toc-nav-number">1.10.5.</span> <span class="toc-nav-text">其他垃圾回收器:AliGC</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
 
 
       <!-- Sidebar Container -->
@@ -1343,6 +1356,8 @@ jdk8 使用的是parallel</p>
             <a href="/tags/">特色标签</a>
           </h5>
           <div class="tags">
+            
+            <a class="tag" href="/tags/#JVM" title="JVM">JVM</a>
             
           </div>
         </section>
