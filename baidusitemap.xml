@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/cn/Spring5_JdbcTenmplate+%E4%BA%8B%E5%8A%A1,%E9%83%A8%E5%88%86%E6%96%B0%E5%8A%9F%E8%83%BD/</loc>
+    <lastmod>2021-07-17</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/Spring5_AOP/</loc>
+    <lastmod>2021-07-17</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/cn/Spring5_IOC/</loc>
     <lastmod>2021-07-17</lastmod>
   </url>
