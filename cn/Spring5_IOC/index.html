@@ -258,6 +258,17 @@
           
           
           <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
             <a href="/categories/">
               
               分类
@@ -272,17 +283,6 @@
             <a href="/tags/">
               
               标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/archive/">
-              
-              归档
               
               
             </a>
@@ -400,11 +400,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">26</span> Minutes
+              Estimated Reading Time <span class="post-count">27</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">5.5k</span> In Total
+              Words <span class="post-count">6k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -696,6 +696,25 @@ getBean方法时候创建多实例对象</p>
 （ 4 ）@Repository</p>
 <ul>
 <li>上面四个注解功能是一样的，都可以用来创建bean实例</li>
+</ul>
+<p><strong>除了上述4个注解@Bean和@Component也可以创建Bean</strong></p>
+<ul>
+<li>@Component注解表明一个类会作为组件类，并告知Spring要为这个类创建bean。</li>
+<li>@Bean注解告诉Spring这个方法将会返回一个对象，这个对象要注册为Spring应用上下中的bean。通常方法体中包含了最终产生bean实例的逻辑。</li>
+</ul>
+<p>两者比较</p>
+<ul>
+<li>
+<p>相同点：两者的结果都是为spirng容器注册bean。</p>
+</li>
+<li>
+<p>不同点：@Component通常是通过类路径扫描来自动侦测已经自动装配到spring容器中。</p>
+<pre><code>  		 @Bean注解通常是我们在标有该注解的方法中定义产生这个bean的逻辑。
+</code></pre>
+<p><strong>理解：</strong></p>
+<p>@Component （@Controller @Service @Respository）作用于类上，只有在我们的SpringBoot应用程序启用了组件扫描并且包含了被注解的类时才有效。通过组件扫描，Spring将扫描整个类路径，并将所有@Component注释类添加到Spring Context，这里有的不足就是会把整个类当成bean注册到spring 容器上，如果这个类中并不是所有方法都需要注册为bean的话，会出现不需要的方法都注册成为bean，这时候必须确保这些不需要的方法也能注册为bean或者在扫描中加filter 过滤这些不需要的bean,否者spring将无法成功启动。</p>
+<p>@Bean相对来说就更加灵活了，它可以独立加在方法上，按需注册到spring容器，而且如果你要用到第三方类库里面某个方法的时候，你就只能用@Bean把这个方法注册到spring容器，因为用@Component你需要配置组件扫描到这个第三方类路径而且还要在别人源代码加上这个注解，很明显是不现实的。</p>
+</li>
 </ul>
 <p><strong>3</strong> 、基于注解方式实现对象创建<br>
 第一步 引入依赖</p>
