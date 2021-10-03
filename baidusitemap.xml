@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/cn/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/</loc>
+    <lastmod>2021-10-03</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/cn/IDEA%EF%BC%882021%EF%BC%89%E6%9C%80%E5%85%A8%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     <lastmod>2021-07-21</lastmod>
   </url>

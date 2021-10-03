@@ -2,37 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite-url/cn/IDEA%EF%BC%882021%EF%BC%89%E6%9C%80%E5%85%A8%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    <loc>http://yoursite-url/cn/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/</loc>
     
-    <lastmod>2021-07-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/categories/index.html</loc>
-    
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/index.html</loc>
     
-    <lastmod>2021-07-18</lastmod>
+    <lastmod>2021-08-24</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/about/index.html</loc>
+    <loc>http://yoursite-url/categories/index.html</loc>
     
-    <lastmod>2021-07-18</lastmod>
+    <lastmod>2021-08-24</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite-url/404.html</loc>
     
-    <lastmod>2021-07-18</lastmod>
+    <lastmod>2021-08-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/about/index.html</loc>
+    
+    <lastmod>2021-08-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/cn/IDEA%EF%BC%882021%EF%BC%89%E6%9C%80%E5%85%A8%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
+    
+    <lastmod>2021-07-21</lastmod>
     
   </url>
   
@@ -193,7 +200,7 @@
 
   <url>
     <loc>http://yoursite-url/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -201,56 +208,56 @@
   
   <url>
     <loc>http://yoursite-url/tags/idea/</loc>
-    <lastmod>2021-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/JavaWeb/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/JVM/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/Spring/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/OSS/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/%E6%8E%92%E5%BA%8F/</loc>
-    <lastmod>2021-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite-url/tags/%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <loc>http://yoursite-url/tags/JavaWeb/</loc>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/tags/EasyExcel/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2021-10-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yoursite-url/tags/%E7%9F%AD%E4%BF%A1%E6%9C%8D%E5%8A%A1/</loc>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -259,21 +266,21 @@
   
   <url>
     <loc>http://yoursite-url/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://yoursite-url/categories/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-07-21</lastmod>
+    <lastmod>2021-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
