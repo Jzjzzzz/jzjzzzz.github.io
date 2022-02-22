@@ -247,17 +247,6 @@
           
           
           <li>
-            <a href="/archive/">
-              
-              归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/about/">
               
               关于
@@ -272,6 +261,17 @@
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
               
               
             </a>
@@ -400,11 +400,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">5</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">577</span> In Total
+              Words <span class="post-count">1.3k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -504,7 +504,7 @@
 <p>饿汉式：直接创建对象，不存在线程安全问题</p>
 <ul>
 <li>
-<p>直接实例化饿汉式（简洁直观）</p>
+<p>直接实例化（简洁直观）</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接创建实例对象，不管你是否需要这个对象都会创建</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
@@ -512,8 +512,12 @@
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//枚举类型：表示该类型的对象是有限的几个</span></span><br><span class="line"><span class="comment">//我们可以限定为一个，就成了单例</span></span><br><span class="line"><span class="keyword">public</span> <span class="built_in">enum</span> <span class="function"><span class="title">Singleton</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	INSTANCE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
-<p>静态代码块饿汉式（适合复杂实例化）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> INSTANCE;</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">    	INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">  &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>静态代码块（适合复杂实例化）</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    //私有化构造方法</span><br><span class="line">   <span class="keyword"> private</span> Singleton()&#123;&#125;;</span><br><span class="line">   <span class="keyword"> private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">   <span class="keyword"> static</span> &#123;</span><br><span class="line">       <span class="built_in"> instance </span>=<span class="built_in"> new </span>Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword"> public</span><span class="keyword"> static</span> Singleton getInstance()&#123;</span><br><span class="line">       <span class="built_in"> return </span>instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>静态成员变量</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    //私有化构造方法</span><br><span class="line">   <span class="keyword"> private</span> Singleton()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    //本类中创建本类对象</span><br><span class="line">   <span class="keyword"> private</span><span class="keyword"> static</span> Singleton<span class="built_in"> instance </span>=<span class="built_in"> new </span>Singleton();</span><br><span class="line"></span><br><span class="line">    //提供一个公共的访问方法，让外界获取该对象</span><br><span class="line">   <span class="keyword"> public</span><span class="keyword"> static</span> Singleton getInstance()&#123;</span><br><span class="line">       <span class="built_in"> return </span>instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -522,11 +526,12 @@
 <ul>
 <li>
 <p>线程不安全（适合单线程）</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line"><span class="keyword">	private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"><span class="keyword">	private</span> Singleton()&#123;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">	public</span><span class="keyword"> static</span> Singleton getInstance()&#123;</span><br><span class="line">    	if(instance == null)&#123;</span><br><span class="line">      <span class="built_in">	instance </span>==<span class="built_in"> new </span>Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="built_in"> return </span>instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton &#123;</span><br><span class="line">    //私有化构造方法</span><br><span class="line">   <span class="keyword"> private</span> Singleton()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">   <span class="keyword"> private</span><span class="keyword"> static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">   <span class="keyword"> public</span><span class="keyword"> static</span> Singleton getInstance()&#123;</span><br><span class="line">        if(instance==null)&#123;</span><br><span class="line">           <span class="built_in"> instance </span>=<span class="built_in"> new </span>Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="built_in"> return </span>instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>线程安全（适用于多线程）</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">  <span class="keyword">private</span> <span class="function"><span class="title">Singleton</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="function"><span class="title">getInstance</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(instance == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="comment">//加锁</span></span><br><span class="line">        <span class="function"><span class="title">synchronized</span>(<span class="params">Singleton.<span class="keyword">class</span></span>)</span>&#123;</span><br><span class="line">          <span class="keyword">if</span>(instance == <span class="literal">null</span>)&#123;</span><br><span class="line">          instance == <span class="keyword">new</span> Singleton();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">双重检查锁模式是一种非常好的单例实现模式，解决了单例、性能、线程安全问题，上面的双重检测锁模式看上去完美无缺，其实是存在问题，在多线程的情况下，可能会出现空指针问题，出现问题的原因是JVM在实例化对象的时候会进行优化和指令重排序操作。</span><br><span class="line">要解决双重检查锁模式带来空指针异常的问题，只需要使用 <span class="keyword">volatile</span> 关键字, <span class="keyword">volatile</span> 关键字可以保证可见性和有序性。</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>静态内部类形式（适用于多线程）</p>
@@ -535,6 +540,91 @@
 </ul>
 </li>
 </ul>
+<h3 id="破坏单例模式">破坏单例模式</h3>
+<p>使上面定义的单例类（Singleton）可以创建多个对象，枚举方式除外。有两种方式，分别是序列化和反射。</p>
+<ul>
+<li>
+<p>序列化反序列化</p>
+<p>测试类：</p>
+<pre><code>   public class Test &#123;
+    public static void main(String[] args) throws Exception &#123;
+        //往文件中写对象
+        //writeObject2File();
+        //从文件中读取对象
+        Singleton s1 = readObjectFromFile();
+        Singleton s2 = readObjectFromFile();
+   //判断两个反序列化后的对象是否是同一个对象
+    System.out.println(s1 == s2);
+&#125;
+
+private static Singleton readObjectFromFile() throws Exception &#123;
+    //创建对象输入流对象
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;C:\\Users\\Think\\Desktop\\a.txt&quot;));
+    //第一个读取Singleton对象
+    Singleton instance = (Singleton) ois.readObject();
+
+    return instance;
+&#125;
+
+public static void writeObject2File() throws Exception &#123;
+    //获取Singleton类的对象
+    Singleton instance = Singleton.getInstance();
+    //创建对象输出流
+    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;C:\\Users\\Think\\Desktop\\a.txt&quot;));
+    //将instance对象写出到文件中
+    oos.writeObject(instance);
+&#125;
+&#125;
+</code></pre>
+<p>说明： 上面代码运行结果是<code>false</code>，表明序列化和反序列化已经破坏了单例设计模式。</p>
+</li>
+<li>
+<p>反射：</p>
+<pre><code>public class Client &#123;
+    public static void main(String[] args) throws Exception &#123;
+        //获取Singleton的字节码对象
+        Class clazz = Singleton.class;
+        //获取无参构造方法对象
+        Constructor cons = clazz.getDeclaredConstructor();
+        //取消访问检查
+        cons.setAccessible(true);
+        //创建Singleton对象
+        Singleton s1 = (Singleton)cons.newInstance();
+        Singleton s2 = (Singleton)cons.newInstance();
+
+        System.out.println(s1 == s2);
+
+    &#125;
+&#125;
+</code></pre>
+<p>上面代码运行结果是<code>false</code>，表明序列化和反序列化已经破坏了单例设计模式</p>
+<p>注意：枚举方式不会出现这两个问题。</p>
+</li>
+</ul>
+<h4 id="问题的解决">问题的解决</h4>
+<p>序列化、反序列方式破坏单例模式的解决方法：</p>
+<p>在Singleton类中添加<code>readResolve()</code>方法，在反序列化时被反射调用，如果定义了这个方法，就返回这个方法的值，如果没有定义，则返回新new出来的对象。</p>
+<pre><code>public class Singleton implements Serializable &#123;
+//私有构造方法
+private Singleton() &#123;&#125;
+
+private static class SingletonHolder &#123;
+    private static final Singleton INSTANCE = new Singleton();
+&#125;
+
+//对外提供静态方法获取该对象
+public static Singleton getInstance() &#123;
+    return SingletonHolder.INSTANCE;
+&#125;
+
+/**
+ * 下面是为了解决序列化反序列化破解单例模式
+ */
+private Object readResolve() &#123;
+    return SingletonHolder.INSTANCE;
+&#125;
+&#125;
+</code></pre>
 
 
         <hr>
@@ -631,7 +721,7 @@
       repo: '',
       owner: '',
       admin: '',
-      id: 'Sun Oct 03 2021 11:45:33 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Sun Oct 03 2021 11:45:33 GMT-0600', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -684,7 +774,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">单例设计模式（Singleton）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSingleton%EF%BC%9F"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">什么是Singleton？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">要点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">几种常见形式</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">单例设计模式（Singleton）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSingleton%EF%BC%9F"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">什么是Singleton？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A6%81%E7%82%B9"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">要点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">几种常见形式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A0%B4%E5%9D%8F%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">破坏单例模式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="toc-nav-number">1.0.4.1.</span> <span class="toc-nav-text">问题的解决</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -816,7 +906,7 @@
         <p class="copyright text-muted">
           Copyright &copy;
           Jzj
-          2021
+          2022
           <br>
           Theme by
           <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
