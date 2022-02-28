@@ -258,9 +258,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/tags/">
               
-              归档
+              标签
               
               
             </a>
@@ -280,9 +280,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -400,11 +400,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">7</span> Minutes
+              Estimated Reading Time <span class="post-count">6</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.6k</span> In Total
+              Words <span class="post-count">1.5k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -467,12 +467,12 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <h1>数据结构-稀疏数组和队列（一）</h1>
-<h2 id="1-稀疏数组">1 稀疏数组</h2>
-<h3 id="1-1-实际需求">1.1 实际需求</h3>
+<h2 id="稀疏数组">稀疏数组</h2>
+<h3 id="实际需求">实际需求</h3>
 <p>五子棋程序，有存盘退出和续上盘的功能。</p>
 <p><img src="image-20220222055943268.png" alt="image-20220222055943268"></p>
 <p>问题：因为该二维数组的很多值是默认值0，因此记录了很多没有意义的数据，我们可以使用稀疏数组解决。</p>
-<h3 id="1-2-基本介绍">1.2 基本介绍</h3>
+<h3 id="基本介绍">基本介绍</h3>
 <p>当一个数组中大部分元素为0，或者为同一个值得数组时，可以使用稀疏数组来保存该数组。</p>
 <p>稀疏数组的处理方法是：</p>
 <ul>
@@ -481,7 +481,7 @@
 </ul>
 <p>举例说明：</p>
 <p><img src="image-20220222060759621.png" alt="image-20220222060759621"></p>
-<h3 id="1-3-应用实例">1.3 应用实例</h3>
+<h3 id="应用实例">应用实例</h3>
 <ul>
 <li>使用稀疏数组，来保留类似前面的二维数组(棋盘、地图等等)</li>
 <li>把稀疏数组存盘，并且可以从新恢复原来的二维数组数</li>
@@ -492,18 +492,18 @@
 <li>代码实现</li>
 </ul>
 <figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package com.jzj.sparsearray;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @Author Jzj</span></span><br><span class="line"><span class="comment"> * @Date 2022/1/25 14:03</span></span><br><span class="line"><span class="comment"> * @Version 1.0</span></span><br><span class="line"><span class="comment"> * @注释: 使用稀疏数组保存棋盘，生成棋盘</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">public class <span class="symbol">SparseArray</span> &#123;</span><br><span class="line">    public static void main(<span class="symbol">String</span>[] args) &#123;</span><br><span class="line">        //创建一个原始的二维数组 <span class="number">11</span>*<span class="number">11</span></span><br><span class="line">        //<span class="number">0</span>表示没有旗子，<span class="number">1</span>表示黑子，<span class="number">2</span>表示白子</span><br><span class="line">        int chessArr1[][] = new int[<span class="number">11</span>][<span class="number">11</span>];</span><br><span class="line">        chessArr1[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">        chessArr1[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span>;</span><br><span class="line">        chessArr1[<span class="number">4</span>][<span class="number">5</span>] = <span class="number">2</span>;</span><br><span class="line">        //输出原始的二维数组</span><br><span class="line">        <span class="symbol">System</span>.out.println(<span class="string">&quot;原始的二维数组&quot;</span>);</span><br><span class="line">        for (int[] row : chessArr1) &#123;</span><br><span class="line">            for (int data : row) &#123;</span><br><span class="line">                <span class="symbol">System</span>.out.printf(<span class="string">&quot;%d\t&quot;</span>, data);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="symbol">System</span>.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //将二维数组 转稀疏数组</span><br><span class="line">        //先遍历二维数组，得到非<span class="number">0</span>的数据个数</span><br><span class="line">        int sum = <span class="number">0</span>;</span><br><span class="line">        for (int i = <span class="number">0</span>; i &lt; <span class="number">11</span>; i++) &#123;</span><br><span class="line">            for (int j = <span class="number">0</span>; j &lt; <span class="number">11</span>; j++) &#123;</span><br><span class="line">                if (chessArr1[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    sum++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="symbol">System</span>.out.println(sum);</span><br><span class="line">        //创建对应的稀疏数组</span><br><span class="line">        int sparseArr[][] = new int[sum + <span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line">        //给稀疏数组赋值</span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">11</span>;</span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">11</span>;</span><br><span class="line">        sparseArr[<span class="number">0</span>][<span class="number">2</span>] = sum;</span><br><span class="line">        //遍历二维数组，将非<span class="number">0</span>的值存放到稀疏数组中</span><br><span class="line">        int count = <span class="number">0</span>; //用于记录是第几个非<span class="number">0</span>数据</span><br><span class="line">        for (int i = <span class="number">0</span>; i &lt; <span class="number">11</span>; i++) &#123;</span><br><span class="line">            for (int j = <span class="number">0</span>; j &lt; <span class="number">11</span>; j++) &#123;</span><br><span class="line">                if (chessArr1[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                    sparseArr[count][<span class="number">0</span>] = i;</span><br><span class="line">                    sparseArr[count][<span class="number">1</span>] = j;</span><br><span class="line">                    sparseArr[count][<span class="number">2</span>] = chessArr1[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //输出稀疏数组</span><br><span class="line">        <span class="symbol">System</span>.out.println();</span><br><span class="line">        <span class="symbol">System</span>.out.println(<span class="string">&quot;得到的稀疏数组为&quot;</span>);</span><br><span class="line">        for (int i = <span class="number">0</span>; i &lt; sparseArr.length; i++) &#123;</span><br><span class="line">            <span class="symbol">System</span>.out.printf(<span class="string">&quot;%d\t%d\t%d\t\n&quot;</span>, sparseArr[i][<span class="number">0</span>], sparseArr[i][<span class="number">1</span>], sparseArr[i][<span class="number">2</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="symbol">System</span>.out.println();</span><br><span class="line">        //将稀疏数组恢复成原始的二维数组</span><br><span class="line">        int chessArr2[][] = new int[sparseArr[<span class="number">0</span>][<span class="number">0</span>]][sparseArr[<span class="number">0</span>][<span class="number">1</span>]];</span><br><span class="line">        for (int i = <span class="number">1</span>; i &lt; sparseArr.length; i++) &#123;</span><br><span class="line">            chessArr2[sparseArr[i][<span class="number">0</span>]][sparseArr[i][<span class="number">1</span>]] = sparseArr[i][<span class="number">2</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="symbol">System</span>.out.println();</span><br><span class="line">        for (int[] row : chessArr2) &#123;</span><br><span class="line">            for (int data : row) &#123;</span><br><span class="line">                <span class="symbol">System</span>.out.printf(<span class="string">&quot;%d\t&quot;</span>, data);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="symbol">System</span>.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-队列">2 队列</h2>
-<h3 id="2-1-队列的一个使用场景">2.1 队列的一个使用场景</h3>
+<h2 id="队列">队列</h2>
+<h3 id="队列的一个使用场景">队列的一个使用场景</h3>
 <p>银行的排队:</p>
 <p><img src="image-20220222061453553.png" alt="image-20220222061453553"></p>
-<h3 id="2-2-队列介绍">2.2 队列介绍</h3>
+<h3 id="队列介绍">队列介绍</h3>
 <ul>
 <li>队列是一个有序列表，可以用数组或是链表来实现。</li>
 <li>遵循先入先出的原则。即：先存入队列的数据，要先取出。后存入的要后取出。</li>
 <li>示意图：(使用数组模拟队列示意图)</li>
 </ul>
 <p><img src="image-20220222061608839.png" alt="image-20220222061608839"></p>
-<h3 id="2-3-数组模拟队列思路">2.3 数组模拟队列思路</h3>
+<h3 id="数组模拟队列思路">数组模拟队列思路</h3>
 <ul>
 <li>队列本身是有序列表，若使用数组的结构来存储队列的数据，则队列数组的声明如下图, 其中 maxSize 是该队列的最大容量。</li>
 <li>因为队列的输出、输入是分别从前后端来处理，因此需要两个变量 front及 rear分别记录队列前后端的下标，front 会随着数据输出而改变，而 rear则是随着数据输入而改变，如图所示:</li>
@@ -677,7 +677,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">数据结构-稀疏数组和队列（一）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1 稀疏数组</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-%E5%AE%9E%E9%99%85%E9%9C%80%E6%B1%82"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.1 实际需求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">1.2 基本介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-3-%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">1.3 应用实例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E9%98%9F%E5%88%97"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2 队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-1-%E9%98%9F%E5%88%97%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">2.1 队列的一个使用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-2-%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2.2 队列介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-3-%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">2.3 数组模拟队列思路</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">数据结构-稀疏数组和队列（一）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">稀疏数组</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E9%99%85%E9%9C%80%E6%B1%82"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">实际需求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">基本介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text">应用实例</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%98%9F%E5%88%97"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%9F%E5%88%97%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">队列的一个使用场景</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%9F%E5%88%97%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">队列介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text">数组模拟队列思路</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
