@@ -247,17 +247,6 @@
           
           
           <li>
-            <a href="/archive/">
-              
-              归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/about/">
               
               关于
@@ -272,6 +261,17 @@
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
               
               
             </a>
@@ -444,6 +444,49 @@
       <!-- Main Content -->
 
 
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/cn/Java虚拟机_垃圾回收（三）/">
+    <h2 class="post-title">
+      Java虚拟机_垃圾回收（三）
+    </h2>
+    <h3 class="post-subtitle">
+      垃圾回收器
+    </h3>
+    <div class="post-content-preview">
+      Java虚拟机_垃圾回收（三）
+GC的分类与性能指标
+
+垃圾收集器没有在规范中进行过多的规定，可以由不同的厂商、不同版本的JVM来实现。
+由于JDK的版本处于高速迭代过程中，因此Java发展至今已经衍生了众多的GC版本。
+从不同角度分析垃圾收集器，可以将GC分为不同的类型。
+
+按线程数分，可以分为串行垃圾回收器和并行垃圾回收器
+Java不同版本的新特性
+
+语法层面：Lambda表达式，swi......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Jzj on
+    2021-07-07
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#JVM" title="JVM">JVM</a>
+    
+  </div>
+  
+
+</div>
+<hr>
 
 <div class="post-preview">
   
@@ -810,52 +853,6 @@ Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。�
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/Java虚拟机_类加载子系统/">
-    <h2 class="post-title">
-      Java虚拟机_类加载子系统
-    </h2>
-    <h3 class="post-subtitle">
-      类加载子系统原理
-    </h3>
-    <div class="post-content-preview">
-      Java虚拟机_类加载子系统
-JVM架构图
-
-1.类加载子系统作用
-
-
-类加载子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识（cofe babe）；
-
-
-
-ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine（执行引擎）决定
-
-
-加载的类信息存放于一块成为方法区的内存空间。除了类信息之外，方法区......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Jzj on
-    2021-06-15
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#JVM" title="JVM">JVM</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -936,6 +933,10 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
     
     
     
+    <a href="/tags/#递归" title="递归" rel="1">递归</a>
+    
+    
+    
     <a href="/tags/#排序" title="排序" rel="1">排序</a>
     
     
@@ -1003,6 +1004,10 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
 <div class="widget">
   <ul>
     
+    <a href="../../cn/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%80%92%E5%BD%92%EF%BC%88%E5%9B%9B%EF%BC%89/">
+      <li>数据结构-递归（四）</li>
+    </a>
+    
     <a href="../../cn/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%EF%BC%88%E4%B8%89%EF%BC%89/">
       <li>数据结构-栈（三）</li>
     </a>
@@ -1017,10 +1022,6 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
     
     <a href="../../cn/%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E4%BC%98%E5%8C%96/">
       <li>发送短信方法使用异步优化</li>
-    </a>
-    
-    <a href="../../cn/%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88Singleton%EF%BC%89/">
-      <li>单例设计模式（Singleton）</li>
     </a>
     
   </ul>
@@ -1045,7 +1046,7 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2021/12/">December 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/10/">October 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/06/">June 2021</a><span class="archive-list-count">15</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2021/12/">December 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/11/">November 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/10/">October 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/07/">July 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2021/06/">June 2021</a><span class="archive-list-count">15</span></li></ul>
 </div>
 
 
@@ -1071,6 +1072,10 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
     
     <a href="/categories/#数据结构">
       <li>数据结构</li>
+    </a>
+    
+    <a href="/categories/#递归">
+      <li>递归</li>
     </a>
     
     <a href="/categories/#算法">
